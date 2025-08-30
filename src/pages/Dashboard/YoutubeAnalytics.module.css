@@ -1,0 +1,201 @@
+.analyticsContainer {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+.sidebarSection {
+  width: 250px;
+  flex-shrink: 0;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  padding: 24px 32px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pageHeader h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.openStudioBtn {
+  background-color: #d93025;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.openStudioBtn:hover {
+  background-color: #b1271c;
+}
+
+/* Filters */
+.filtersWrapper {
+  margin-bottom: 20px;
+}
+
+.filtersContainer {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Stats + Journey Split */
+.statsRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+}
+.statCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.statsGrid {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  gap: 16px;
+}
+
+.statsRowLine {
+  display: flex;
+  gap: 16px;
+}
+
+.statsRowLine > div {
+  flex: 1;
+}
+
+.journeyChart {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  min-width: 280px;
+}
+
+.journeyChart h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.legend {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.legendDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Charts */
+.chartsRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.chartCard {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  min-width: 300px;
+}
+
+/* Table */
+.tableWrapper {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.performanceTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.performanceTable th,
+.performanceTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.performanceTable th {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #666;
+  white-space: nowrap;
+}
+
+.performanceTable tr:hover {
+  background: #f9fafb;
+}
+
+.thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}

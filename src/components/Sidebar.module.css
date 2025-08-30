@@ -1,0 +1,92 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  border-right: 1px solid #e0e0e0; /* lighter border for separation */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05); /* subtle shadow */
+}
+
+.sidebarHeader {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.sidebarHeader h1 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.sidebarHeader p {
+  font-size: 13px;
+  color: #888;
+  margin: 4px 0 0 0;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 6px;
+  flex-grow: 1; /* Allows menu to take available space */
+}
+
+.menuItem {
+  text-decoration: none; /* Remove underline */
+  text-align: left;
+  padding: 10px 15px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+.active {
+  background-color: #FFE3EE; /* light pink from screenshot */
+  color: #AB1A52; /* pink text from screenshot */
+  font-weight: 600;
+}
+
+/* --- Layout for main content --- */
+.contentArea {
+  margin-left: 250px; /* Adjust based on sidebar width */
+  padding-top: 60px; /* Adjust based on topbar height */
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.topbarContainer {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Aligns with contentArea */
+  right: 0;
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 999; /* Below sidebar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.dashboardContent {
+  padding: 20px;
+}

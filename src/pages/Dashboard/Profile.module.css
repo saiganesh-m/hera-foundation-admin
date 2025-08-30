@@ -1,0 +1,326 @@
+/* src/pages/Dashboard/Profile.module.css */
+.profileContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 280px;
+}
+
+.contentArea {
+  padding: 24px;
+}
+
+/* Header with email and logout button */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.userEmail {
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.logoutButton {
+  background:#AB1A52;
+  color:#FFFFFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.pageSubtitle {
+  color: #6b7280;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profileCard {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #db2777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.userRole {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadLabel {
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.uploadInput {
+  display: none;
+}
+
+.fileText {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.infoContainer {
+  padding-top: 0;
+}
+
+.infoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.infoItem {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailsCard {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 0;
+}
+
+.formLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #9ca3af;
+}
+
+.saveButton {
+  background: #E0E0E0;
+  color: #424242;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.saveButton:hover {
+  background: #1d4ed8;
+}
+
+.passwordGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.updateButton {
+  background: #E0E0E0;
+  color: #424242;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.updateButton:hover {
+  background: #374151;
+}
+
+.passwordNote {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.legalCard {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.legalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.legalInfo {
+  font-size: 14px;
+  color: #374151;
+}
+
+.legalItem {
+  margin-bottom: 8px;
+}
+
+.legalValue {
+  font-weight: 500;
+  color: #111827;
+}
+
+.legalLinks {
+  margin-top: 16px;
+}
+
+.link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .mainContent {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .formGrid, .passwordGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contentArea {
+    padding: 16px;
+    padding-top: 90px;
+  }
+} 
