@@ -1,18 +1,20 @@
 // src/pages/Dashboard/Profile.jsx
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import styles from "./Profile.module.css";
 
 const Profile = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   return (
     <div className={styles.profileContainer}>
-      {/* Sidebar */}
       <Sidebar />
       
-      {/* Main Content */}
       <div className={styles.mainContent}>
         <div className={styles.contentArea}>
-          {/* Header with email, logout button, profile title, and subtitle */}
           <div className={styles.headerContainer}>
             <div className={styles.pageTitleContainer}>
               <h2 className={styles.pageTitle}>Profile</h2>
@@ -29,16 +31,13 @@ const Profile = () => {
         </div>
         
         <div className={styles.gridContainer}>
-          {/* Left Column - Profile Card and Session Card */}
           <div className={styles.leftColumn}>
-            {/* Profile Card */}
             <div className={styles.profileCard}>
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>HA</div>
                 <h3 className={styles.userName}>Hera Admin</h3>
                 <p className={styles.userRole}>Admin Console</p>
                 
-                {/* Upload photo */}
                 <div className={styles.uploadContainer}>
                   <label className={styles.uploadLabel}>
                     Choose File
@@ -49,7 +48,6 @@ const Profile = () => {
               </div>
             </div>
             
-            {/* Session Card */}
             <div className={styles.profileCard}>
               <div className={styles.infoContainer}>
                 <h4 className={styles.infoTitle}>Session</h4>
@@ -63,15 +61,13 @@ const Profile = () => {
                 </p>
                 <p className={styles.infoItem}>
                   <span className={styles.infoLabel}>Since : </span> 
-                  28/08/2025, 10:40:30 AM
+                  28/08/2023, 10:49:30 AM
                 </p>
               </div>
             </div>
           </div>
           
-          {/* Right Column */}
           <div className={styles.rightColumn}>
-            {/* Profile Details */}
             <div className={styles.detailsCard}>
               <h3 className={styles.cardTitle}>Profile Details</h3>
               <div className={styles.formGrid}>
@@ -81,14 +77,7 @@ const Profile = () => {
                     type="text"
                     value="Hera Admin"
                     className={styles.formInput}
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>Email</label>
-                  <input
-                    type="email"
-                    value="admin@theherafoundation.com"
-                    className={styles.formInput}
+                    readOnly
                   />
                 </div>
                 <div className={styles.formGroup}>
@@ -96,7 +85,21 @@ const Profile = () => {
                   <input
                     type="text"
                     placeholder="Enter Phone Number"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className={styles.formInput}
+                  />
+                </div>
+              </div>
+              
+              <div className={styles.formGrid}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Email</label>
+                  <input
+                    type="email"
+                    value="admin@theherafoundation.com"
+                    className={styles.formInput}
+                    readOnly
                   />
                 </div>
                 <div className={styles.formGroup}>
@@ -111,31 +114,41 @@ const Profile = () => {
               <button className={styles.saveButton}>Save Changes</button>
             </div>
             
-            {/* Change Password */}
             <div className={styles.detailsCard}>
               <h3 className={styles.cardTitle}>Change Password</h3>
               <div className={styles.passwordGrid}>
-                <input
-                  type="password"
-                  placeholder="Current Password"
-                  className={styles.formInput}
-                />
-                <input
-                  type="password"
-                  placeholder="New Password"
-                  className={styles.formInput}
-                />
-                <input
-                  type="password"
-                  placeholder="Confirm New Password"
-                  className={styles.formInput}
-                />
+                <div className={styles.formGroup}>
+                  <input
+                    type="password"
+                    placeholder="Current Password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className={styles.formInput}
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <input
+                    type="password"
+                    placeholder="New Password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className={styles.formInput}
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <input
+                    type="password"
+                    placeholder="Confirm New Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className={styles.formInput}
+                  />
+                </div>
               </div>
               <button className={styles.updateButton}>Update Password</button>
               <p className={styles.passwordNote}>Keep a strong password</p>
             </div>
             
-            {/* About & Legal */}
             <div className={styles.legalCard}>
               <h3 className={styles.legalTitle}>About & Legal</h3>
               <div className={styles.legalInfo}>
@@ -143,7 +156,7 @@ const Profile = () => {
                   App version : <span className={styles.legalValue}>0.1.0</span>
                 </p>
                 <p className={styles.legalItem}>
-                  Build : <span className={styles.legalValue}>MVP-Admin</span>
+                  Build : <span className={styles.legalValue}>MVP-Admin</span>  
                 </p>
                 <p className={styles.legalItem}>
                   Region : <span className={styles.legalValue}>IN</span>

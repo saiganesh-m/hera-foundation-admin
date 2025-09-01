@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar";
-import Topbar from "../../components/Topbar";
 import Filters from "../../components/Filters";
 import styles from "./Content.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -161,7 +160,7 @@ const Content = () => {
             <th className={styles.tableHeader}>Published On</th>
             <th className={styles.tableHeader}>Views</th>
             <th className={styles.tableHeader}>Avg. Watch</th>
-            <th className={styles.tableHeader}>Actions</th>
+            <th className={styles.tableHeader}>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -217,25 +216,25 @@ const Content = () => {
                     {activeDropdown === video.id && (
                       <div className={styles.dropdownContent}>
                         <button
-                          className={`${styles.dropdownButton} live-button`}
+                          className={`${styles.dropdownButton} ${styles.liveButton}`}
                           onClick={() => handleLive(video.id)}
                         >
                           Live
                         </button>
                         <button
-                          className={`${styles.dropdownButton} schedule-button`}
+                          className={`${styles.dropdownButton} ${styles.scheduleButton}`}
                           onClick={() => handleSchedule(video.id)}
                         >
                           Schedule
                         </button>
                         <button
-                          className={`${styles.dropdownButton} hide-button`}
+                          className={`${styles.dropdownButton} ${styles.hideButton}`}
                           onClick={() => handleHide(video.id)}
                         >
                           Hide
                         </button>
                         <button
-                          className={`${styles.dropdownButton} delete-button`}
+                          className={`${styles.dropdownButton} ${styles.deleteButton}`}
                           onClick={() => handleDelete(video.id)}
                         >
                           Delete
@@ -264,17 +263,15 @@ const Content = () => {
             />
             <div className={styles.overlay}>
               <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
-              {/* Assuming duration is not in your data, adding a placeholder */}
               <span className={styles.duration}>25:00</span>
             </div>
           </div>
           <div className={styles.cardContent}>
-            {/* Added a placeholder for "Your rights and craft confident" as it's not in your data */}
             <p className={styles.cardStatus}>Your rights and craft confident</p>
             <h4 className={styles.cardTitle}>{v.title}</h4>
             <p className={styles.cardMeta}>
-              {v.journey} • {v.subject}{" "}
-              {v.contentType && `• ${v.contentType}`}
+              {v.journey} • {v.subject}
+              {v.contentType && ` • ${v.contentType}`}
             </p>
             <div className={styles.cardStats}>
               <span className={styles.statItem}>
@@ -302,7 +299,6 @@ const Content = () => {
   );
 
   const renderArrangeView = () => {
-    // Group primarily by Subject
     const groupedBySubject = videos.reduce((acc, video) => {
       const subject = video.subject;
       if (!acc[subject]) acc[subject] = [];
@@ -329,7 +325,6 @@ const Content = () => {
               )}
             </div>
 
-            {/* Small line showing Journey (use the first one for consistency, or render per video) */}
             {vids[0] && (
               <p className={styles.arrangeJourney}>{vids[0].journey}</p>
             )}
@@ -365,15 +360,13 @@ const Content = () => {
       <div className={styles.sidebarContainer}>
         <Sidebar />
       </div>
-   
+      
+      <div className={styles.mainContent}>
         <div className={styles.contentArea}>
-          <div className={styles.mainContent}>
-            <Topbar />
-            <div className={styles.pageHeader}>
-              <h2 className={styles.pageTitle}>Content Management</h2>
-              <p className={styles.pageSubtitle}>
-              Add, preview, re-arrange, schedule, hide/unhide and move content
-              across journeys & subjects
+          <div className={styles.pageHeader}>
+            <h2 className={styles.pageTitle}>Content Management</h2>
+            <p className={styles.pageSubtitle}>
+              Add, preview, re-arrange, schedule, hide/unhide and move content across journeys & subjects
             </p>
           </div>
 
@@ -421,7 +414,6 @@ const Content = () => {
                     className={styles.formInput}
                     placeholder="https://youtube.com/"
                   />
-                  {/* You might want an icon here for the link input */}
                 </div>
 
                 <div className={styles.inputWithIcon}>

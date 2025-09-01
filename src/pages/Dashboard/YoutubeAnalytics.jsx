@@ -1,7 +1,7 @@
+// YoutubeAnalytics.js
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import Filters from "../../components/Filters";
-import StatCard from "../../components/StatCard";
 import styles from "./YoutubeAnalytics.module.css";
 import {
   BarChart,
@@ -21,7 +21,7 @@ const YoutubeAnalytics = () => {
     { name: "Pregnancy Journey", value: 3310 },
     { name: "Return To Work Journey", value: 880 },
   ];
-  const COLORS = ["#f9c9b6", "#e7b5a2", "#c59d91"];
+  const COLORS = ["#F7DCC8", "#D4B7AD", "#E3CDC2"];
 
   const leastPerforming = [
     { name: "Video A", value: 700 },
@@ -115,48 +115,77 @@ const YoutubeAnalytics = () => {
 
           {/* Stat Cards + Journey Split */}
           <div className={styles.statsRow}>
-            <div className={styles.statsGrid}>
-              {/* Row 1 (3 cards) */}
-              <div className={styles.statsRowLine}>
-                <StatCard title="Total Views" value="17,300" subtitle="Last 25 Days" />
-                <StatCard title="Unique Viewers" value="12,370" subtitle="Unique Users" />
-                <StatCard title="Total Watch Time" value="6,480 hrs" subtitle="All Journeys | All Subjects" />
+            {/* All 5 Stat Cards in One Row - matching screenshot layout */}
+            <div className={styles.fiveStatsRow}>
+              {/* First Row (3 cards) */}
+              <div className={styles.firstRow}>
+                <div className={styles.statCard}>
+                  <div className={styles.statTitle}>Total Views</div>
+                  <div className={styles.statValue}>17,300</div>
+                  <div className={styles.statSubtitle}>Last 25 Days</div>
+                </div>
+                
+                <div className={styles.statCard}>
+                  <div className={styles.statTitle}>Unique Viewers</div>
+                  <div className={styles.statValue}>12,370</div>
+                  <div className={styles.statSubtitle}>Unique Users</div>
+                </div>
+                
+                <div className={styles.statCard}>
+                  <div className={styles.statTitle}>Total Watch Time</div>
+                  <div className={styles.statValue}>6,480 hrs</div>
+                  <div className={styles.statSubtitle}>All Journeys | All Subjects</div>
+                </div>
               </div>
-              {/* Row 2 (2 cards) */}
-              <div className={styles.statsRowLine}>
-                <StatCard title="Avg. Duration" value="7.2m" subtitle="Last 25 Days" />
-                <StatCard title="Avg. Retention" value="48.5%" subtitle="Last 25 Days" />
+
+              {/* Second Row (2 cards) */}
+              <div className={styles.secondRow}>
+                <div className={styles.statCard}>
+                  <div className={styles.statTitle}>Avg. Duration</div>
+                  <div className={styles.statValue}>7.2m</div>
+                  <div className={styles.statSubtitle}>Last 25 Days</div>
+                </div>
+                
+                <div className={styles.statCard}>
+                  <div className={styles.statTitle}>Avg. Retention</div>
+                  <div className={styles.statValue}>48.5%</div>
+                  <div className={styles.statSubtitle}>Last 25 Days</div>
+                </div>
               </div>
             </div>
 
-            {/* Journey Split */}
+            {/* Journey Split - Compact Version */}
             <div className={styles.journeyChart}>
               <h4>Journey Split</h4>
-              <ResponsiveContainer width="100%" height={250}>
-                <PieChart>
-                  <Pie
-                    data={journeyData}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    dataKey="value"
-                  >
-                    {journeyData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
+              <div className={styles.chartContainer}>
+                <ResponsiveContainer width="100%" height={180}>
+                  <PieChart>
+                    <Pie
+                      data={journeyData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      dataKey="value"
+                      label={({name, percent}) => `${(percent * 100).toFixed(0)}%`}
+                    >
+                      {journeyData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(value) => [`${value} users`, '']} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
               <div className={styles.legend}>
                 {journeyData.map((item, idx) => (
-                  <span key={idx}>
+                  <div key={idx} className={styles.legendItem}>
                     <span
                       className={styles.legendDot}
                       style={{ background: COLORS[idx] }}
                     ></span>
-                    {item.name} ({item.value})
-                  </span>
+                    <span className={styles.legendText}>{item.name} ({item.value})</span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -171,7 +200,7 @@ const YoutubeAnalytics = () => {
                   <XAxis dataKey="name" interval={0} angle={-30} textAnchor="end" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#c59d91" />
+                  <Bar dataKey="value" fill="#D4B7AD" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -183,7 +212,7 @@ const YoutubeAnalytics = () => {
                   <XAxis dataKey="name" interval={0} angle={-30} textAnchor="end" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#60a5fa" />
+                  <Bar dataKey="value" fill="#4D9ECD" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -213,13 +242,13 @@ const YoutubeAnalytics = () => {
                       <img src={video.thumbnail} alt="thumb" className={styles.thumb} />
                     </td>
                     <td>{video.title}</td>
-                    <td>{video.journey}</td>
+                    <td><span className={styles.journeyTag}>{video.journey}</span></td>
                     <td>{video.subject}</td>
-                    <td>{video.type}</td>
-                    <td>{video.views.toLocaleString()}</td>
-                    <td>{(video.watchTime / 60).toFixed(1)}</td>
+                    <td><span className={styles.typeBadge}>{video.type}</span></td>
+                    <td className={styles.boldText}>{video.views.toLocaleString()}</td>
+                    <td className={styles.boldText}>{(video.watchTime / 60).toFixed(1)}</td>
                     <td>{video.avgDuration}</td>
-                    <td>{video.retention}</td>
+                    <td><span className={styles.retentionPill}>{video.retention}</span></td>
                   </tr>
                 ))}
               </tbody>

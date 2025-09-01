@@ -1,0 +1,101 @@
+/* Topbar.module.css */
+.topbarContainer {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 80px; /* Increased height */
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 25px; /* Slightly more padding */
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: left 0.3s ease;
+}
+
+.topbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.topbarText {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pageTitle {
+  font-size: 1.6rem; /* Slightly larger for balance */
+  font-weight: 600;
+  margin: 0;
+  color: #2d3436;
+  line-height: 1.4; /* Better spacing */
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: #636e72;
+  margin: 4px 0 0 0; /* More breathing room */
+}
+
+.exportButton {
+  padding: 10px 18px; /* Adjusted for bigger topbar */
+  background: #AB1A52;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-left: 20px;
+}
+
+.exportButton:hover {
+  background: #8e1444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topbarContainer {
+    left: 0;
+    height: 70px; /* Smaller but still taller than before */
+    padding: 0 15px;
+  }
+
+  .pageTitle {
+    font-size: 1.3rem;
+  }
+
+  .pageSubtitle {
+    font-size: 12px;
+  }
+
+  .exportButton {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbarContainer {
+    height: 65px; /* Keep it compact on very small screens */
+  }
+
+  .pageTitle {
+    font-size: 1rem;
+  }
+
+  .pageSubtitle {
+    display: none;
+  }
+
+  .exportButton {
+    margin-left: 10px;
+    padding: 6px 12px;
+  }
+}

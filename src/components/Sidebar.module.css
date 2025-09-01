@@ -1,7 +1,7 @@
 .sidebar {
-  width: 250px;
+  width: 200px;
   height: 100vh;
-  border-right: 1px solid #e0e0e0; /* lighter border for separation */
+  border-right: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05); /* subtle shadow */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .sidebarHeader {
@@ -36,11 +36,11 @@
   flex-direction: column;
   padding: 15px;
   gap: 6px;
-  flex-grow: 1; /* Allows menu to take available space */
+  flex-grow: 1;
 }
 
 .menuItem {
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   text-align: left;
   padding: 10px 15px;
   border: none;
@@ -55,38 +55,21 @@
   gap: 10px;
 }
 
-
-
-
 .active {
-  background-color: #FFE3EE; /* light pink from screenshot */
-  color: #AB1A52; /* pink text from screenshot */
+  background-color: #FFE3EE;
+  color: #AB1A52;
   font-weight: 600;
 }
 
-/* --- Layout for main content --- */
-.contentArea {
-  margin-left: 250px; /* Adjust based on sidebar width */
-  padding-top: 60px; /* Adjust based on topbar height */
-  background-color: #f9f9f9;
-  min-height: 100vh;
+/* Responsive support */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 180px;
+  }
 }
 
-.topbarContainer {
-  position: fixed;
-  top: 0;
-  left: 250px; /* Aligns with contentArea */
-  right: 0;
-  height: 60px;
-  background: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  z-index: 999; /* Below sidebar */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.dashboardContent {
-  padding: 20px;
+@media (max-width: 480px) {
+  .sidebar {
+    width: 160px;
+  }
 }

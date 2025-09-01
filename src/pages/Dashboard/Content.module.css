@@ -1,12 +1,11 @@
-/* Content.module.css */
 .dashboardContainer {
   display: flex;
   min-height: 100vh;
-  background-color: #f0f2f5; /* Light grey background */
+  background-color: #f0f2f5;
 }
 
 .sidebarContainer {
-  width: 250px; /* Adjust as needed for your Sidebar */
+  width: 200px; /* Reduced from 250px */
   flex-shrink: 0;
 }
 
@@ -19,7 +18,6 @@
 .contentArea {
   padding: 20px 30px;
   flex-grow: 1;
-
 }
 
 .pageHeader {
@@ -40,9 +38,9 @@
 
 .card {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 14px;
   margin-bottom: 25px;
 }
 
@@ -54,14 +52,14 @@
 }
 
 .addVideoForm {
-  margin-bottom: 30px;
-} 
+  margin-bottom: 10px;
+}
 
 .formGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .formSelect,
@@ -92,20 +90,20 @@
   top: 50%;
   transform: translateY(-50%);
   color: #999;
-  pointer-events: none; /* Allows clicks to pass through to input */
+  pointer-events: none;
 }
 
 .addButtonContainer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .addButton {
   background-color: #AB1A52;
   color: #fff;
-  padding: 10px 30px;
+  padding: 6px 15px;
   border: 2px solid #AB1A52;
-  border-radius: 30px; /* Pill shape */
+  border-radius: 30px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -117,7 +115,6 @@
   color: #AB1A52;
 }
 
-/* View Selection Container */
 .viewSelectionContainer {
   display: flex;
   justify-content: flex-end;
@@ -134,7 +131,7 @@
   color: #fff;
   padding: 8px 20px;
   border: 2px solid #AB1A52;
-  border-radius: 10px; /* Pill shape */
+  border-radius: 10px;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -150,7 +147,6 @@
   color: #AB1A52 !important;
 }
 
-/* Table styles */
 .tableContainer {
   overflow-x: auto;
 }
@@ -192,7 +188,7 @@
 }
 
 .titleCell {
-  max-width: 250px; /* Limit title width */
+  max-width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -208,16 +204,16 @@
 }
 
 .statusLive {
-  background-color: #28a745; /* Green */
+  background-color: #28a745;
 }
 
 .statusScheduled {
-  background-color: #ffc107; /* Yellow */
+  background-color: #ffc107;
   color: #333;
 }
 
 .statusHidden {
-  background-color: #6c757d; /* Grey */
+  background-color: #6c757d;
 }
 
 .actionButtons {
@@ -229,7 +225,7 @@
 .actionButton {
   padding: 6px 16px;
   border: 2px solid #AB1A52;
-  border-radius: 30px; /* Pill shape */
+  border-radius: 30px;
   background-color: #AB1A52;
   color: #fff;
   cursor: pointer;
@@ -252,7 +248,7 @@
 }
 
 .moreButton {
-  padding: 6px 8px; /* Smaller for just icon */
+  padding: 6px 8px;
   color: #6c757d;
 }
 
@@ -268,8 +264,8 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 5px;
-  right: 0; /* Align to the right of the button */
-  top: 100%; /* Position below the button */
+  right: 0;
+  top: 100%;
   margin-top: 5px;
 }
 
@@ -290,12 +286,22 @@
   background-color: #f1f1f1;
 }
 
-.liveButton { color: #28a745; }
-.scheduleButton { color: #ffc107; }
-.hideButton { color: #6c757d; }
-.deleteButton { color: #dc3545; }
+.liveButton { 
+  color: #28a745; 
+}
 
-/* Preview View Styles */
+.scheduleButton { 
+  color: #ffc107; 
+}
+
+.hideButton { 
+  color: #6c757d; 
+}
+
+.deleteButton { 
+  color: #dc3545; 
+}
+
 .previewGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -315,7 +321,7 @@
 .thumbnailWrapper {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
   overflow: hidden;
 }
 
@@ -335,7 +341,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(211, 211, 211, 0.3); /* Light transparent grey overlay */
+  background-color: rgba(211, 211, 211, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -403,7 +409,6 @@
   gap: 5px;
 }
 
-/* Arrange View Styles */
 .arrangeGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -488,13 +493,12 @@
   background: #fff;
   color: #212121;
   border: #D1D1D1 2px solid;
-  border-radius: 8px; /* Pill shape */
+  border-radius: 8px;
   padding: 0.3rem 0.8rem;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 
 .filterContainer {
   background: #fff;
@@ -505,39 +509,57 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .dashboardContainer {
     flex-direction: column;
   }
-
+  
   .sidebarContainer {
     width: 100%;
   }
-
+  
   .contentArea {
     padding: 15px;
   }
-
+  
   .formGrid {
     grid-template-columns: 1fr;
   }
-
+  
   .viewSelectionContainer {
     justify-content: center;
   }
-
+  
   .viewButtons {
     flex-direction: column;
     width: 100%;
   }
-
+  
   .viewButton {
     width: 100%;
     text-align: center;
   }
-
+  
   .addButtonContainer {
     justify-content: center;
   }
-}
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .previewGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .arrangeGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+} 

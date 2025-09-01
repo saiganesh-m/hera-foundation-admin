@@ -20,162 +20,113 @@ const Users = () => {
       signup: "01-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "Mohammed Ali",
+      email: "mohammed.ali@example.com",
+      company: "Stark Industries",
+      journey: "Parenting",
       subject: "Finance",
       engagement: "Medium",
-      videos: 62,
+      videos: 45,
       avgWatch: "7.1m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "17-08-2025",
+      signup: "02-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "Sarah Johnson",
+      email: "sarah.j@example.com",
+      company: "Wayne Enterprises",
+      journey: "Newborn",
       subject: "Mental Health",
       engagement: "Low",
-      videos: 62,
+      videos: 28,
       avgWatch: "6.2m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "16-08-2025",
+      signup: "03-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
+      name: "David Miller",
+      email: "david.m@example.com",
+      company: "Oscorp",
       journey: "Pregnancy",
       subject: "Career",
       engagement: "High",
-      videos: 62,
+      videos: 72,
       avgWatch: "9.1m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "15-08-2025",
+      signup: "04-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "Emma Wilson",
+      email: "emma.w@example.com",
+      company: "Umbrella Corp",
+      journey: "Parenting",
       subject: "Health",
       engagement: "Medium",
-      videos: 62,
+      videos: 38,
       avgWatch: "3.6m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "14-08-2025",
+      signup: "05-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "James Brown",
+      email: "james.b@example.com",
+      company: "Cyberdyne",
+      journey: "Newborn",
       subject: "Finance",
       engagement: "Low",
-      videos: 62,
+      videos: 22,
       avgWatch: "6.3m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "13-08-2025",
+      signup: "06-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
+      name: "Lisa Taylor",
+      email: "lisa.t@example.com",
       company: "Acme Corp",
       journey: "Pregnancy",
       subject: "Mental Health",
       engagement: "High",
-      videos: 62,
+      videos: 65,
       avgWatch: "2.6m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "12-08-2025",
+      signup: "07-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "Robert Garcia",
+      email: "robert.g@example.com",
+      company: "Stark Industries",
+      journey: "Parenting",
       subject: "Career",
       engagement: "Medium",
-      videos: 62,
+      videos: 41,
       avgWatch: "2.8m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "11-08-2025",
+      signup: "08-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
+      name: "Maria Lopez",
+      email: "maria.l@example.com",
+      company: "Wayne Enterprises",
+      journey: "Newborn",
       subject: "Mental Health",
       engagement: "Low",
-      videos: 62,
+      videos: 19,
       avgWatch: "6.2m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "10-08-2025",
+      signup: "09-08-2025",
     },
     {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
+      name: "William Chen",
+      email: "william.c@example.com",
+      company: "Oscorp",
       journey: "Pregnancy",
       subject: "Career",
       engagement: "High",
-      videos: 62,
+      videos: 78,
       avgWatch: "9.1m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
+      lastActive: "09-08-2025",
+      signup: "10-08-2025",
     },
-    {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
-      subject: "Health",
-      engagement: "Medium",
-      videos: 62,
-      avgWatch: "3.6m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
-    },
-    {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
-      subject: "Finance",
-      engagement: "Low",
-      videos: 62,
-      avgWatch: "6.3m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
-    },
-    {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
-      subject: "Mental Health",
-      engagement: "High",
-      videos: 62,
-      avgWatch: "2.6m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
-    },
-    {
-      name: "Aisha Khan",
-      email: "aisha.khan@example.com",
-      company: "Acme Corp",
-      journey: "Pregnancy",
-      subject: "Career",
-      engagement: "Medium",
-      videos: 62,
-      avgWatch: "2.8m",
-      lastActive: "18-08-2025",
-      signup: "01-08-2025",
-    },
-
   ]);
 
   return (
@@ -186,31 +137,24 @@ const Users = () => {
       </div>
 
       {/* Main Content */}
-      
-
-        {/* Page Content */}
-        <div className={usersStyles.contentArea}>
-          <div className={usersStyles.mainContent}>
+      <div className={usersStyles.contentArea}>
         {/* Topbar */}
         <Topbar />
-          {/* Header Section */}
-          <div className={usersStyles.headerSection}>
-            <h1 className={usersStyles.pageTitle}>User Analytics</h1>
-            <p className={usersStyles.pageSubtitle}>
-              Monitor and analyze user engagement metrics
-            </p>
-          </div>
+        
+        {/* Dashboard Content */}
+        <div className={usersStyles.dashboardContent}>
+
 
           {/* Stat Cards */}
-          <div className={usersStyles.statCardsContainer}>
+          <div className={usersStyles.statGrid}>
             <StatCard title="Total Users" value={users.length} color="blue" />
             <StatCard title="Active Users" value={2} color="green" />
             <StatCard title="Videos Watched" value={127} color="purple" />
             <StatCard title="Avg. Watch Time" value="6.1m" color="orange" />
           </div>
 
-          {/* Filters Card */}
-          <div className={usersStyles.filterCard}>
+          {/* Filters Container */}
+          <div className={usersStyles.filterContainer}>
             <Filters />
           </div>
 
@@ -219,69 +163,68 @@ const Users = () => {
             <div className={usersStyles.tableHeader}>
               <h3 className={usersStyles.tableTitle}>Users Activity</h3>
               <div className={usersStyles.tableActions}>
-              
+                <button className={usersStyles.exportButton}>Export CSV</button>
               </div>
             </div>
 
             <div className={usersStyles.tableWrapper}>
-              <table className={usersStyles.usersTable}>
+              <table className={usersStyles.dataTable}>
                 <thead>
                   <tr>
-                    <th className={usersStyles.tableHeaderCell}>Name</th>
-                    <th className={usersStyles.tableHeaderCell}>Email</th>
-                    <th className={usersStyles.tableHeaderCell}>Company</th>
-                    <th className={usersStyles.tableHeaderCell}>Journey</th>
-                    <th className={usersStyles.tableHeaderCell}>Subject</th>
-                    <th className={usersStyles.tableHeaderCell}>Engagement</th>
-                    <th className={usersStyles.tableHeaderCell}>Videos</th>
-                    <th className={usersStyles.tableHeaderCell}>Avg. Watch</th>
-                    <th className={usersStyles.tableHeaderCell}>Last Active</th>
-                    <th className={usersStyles.tableHeaderCell}>Signup</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Journey</th>
+                    <th>Subject</th>
+                    <th>Engagement</th>
+                    <th>Videos</th>
+                    <th>Avg. Watch</th>
+                    <th>Last Active</th>
+                    <th>Signup</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((u, idx) => (
-                    <tr key={idx} className={usersStyles.tableRow}>
-                      <td className={usersStyles.tableCell}>
+                  {users.map((user, index) => (
+                    <tr key={index}>
+                      <td>
                         <div className={usersStyles.userInfo}>
-                          <div className={usersStyles.avatar}>{u.name.charAt(0)}</div>
-                          <span className={usersStyles.userName}>{u.name}</span>
+                          <div className={usersStyles.avatar}>
+                            {user.name.charAt(0)}
+                          </div>
+                          <span>{user.name}</span>
                         </div>
                       </td>
-                      <td className={usersStyles.tableCell}>
-                        <a
-                          href={`mailto:${u.email}`}
-                          className={usersStyles.emailLink}
-                        >
-                          {u.email}
+                      <td>
+                        <a href={`mailto:${user.email}`} className={usersStyles.emailLink}>
+                          {user.email}
                         </a>
                       </td>
-                      <td className={usersStyles.tableCell}>{u.company}</td>
-                      <td className={usersStyles.tableCell}>
-                        <span className={usersStyles.journeyBadge}>{u.journey}</span>
-                      </td>
-                      <td className={usersStyles.tableCell}>{u.subject}</td>
-                      <td className={usersStyles.tableCell}>
-                        <span
-                          className={`${usersStyles.engagementBadge} ${
-                            u.engagement === "High"
-                              ? usersStyles.highEngagement
-                              : u.engagement === "Medium"
-                              ? usersStyles.mediumEngagement
-                              : usersStyles.lowEngagement
-                          }`}
-                        >
-                          {u.engagement}
+                      <td>{user.company}</td>
+                      <td>
+                        <span className={usersStyles.journeyBadge}>
+                          {user.journey}
                         </span>
                       </td>
-                      <td className={usersStyles.tableCell}>
+                      <td>{user.subject}</td>
+                      <td>
+                        <span className={`${usersStyles.engagementBadge} ${
+                          user.engagement === "High" 
+                            ? usersStyles.highEngagement 
+                            : user.engagement === "Medium" 
+                            ? usersStyles.mediumEngagement 
+                            : usersStyles.lowEngagement
+                        }`}>
+                          {user.engagement}
+                        </span>
+                      </td>
+                      <td>
                         <div className={usersStyles.videoCount}>
-                          {u.videos} <span className={usersStyles.videoLabel}>videos</span>
+                          {user.videos} <span className={usersStyles.videoLabel}>videos</span>
                         </div>
                       </td>
-                      <td className={usersStyles.tableCell}>{u.avgWatch}</td>
-                      <td className={usersStyles.tableCell}>{u.lastActive}</td>
-                      <td className={usersStyles.tableCell}>{u.signup}</td>
+                      <td>{user.avgWatch}</td>
+                      <td>{user.lastActive}</td>
+                      <td>{user.signup}</td>
                     </tr>
                   ))}
                 </tbody>

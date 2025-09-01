@@ -1,10 +1,9 @@
-// src/components/Sidebar.jsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
-  const location = useLocation(); // Get current URL
+  const location = useLocation();
 
   const menuItems = [
     { name: "Overview", path: "/dashboard" },
