@@ -1,3 +1,7 @@
+body {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
 /* YouTubeAnalytics.module.css */
 .analyticsContainer {
   display: flex;
@@ -36,15 +40,29 @@
 .pageHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.pageHeader h1 {
-  font-size: 28px;
+.headerText {
+  flex: 1;
+  min-width: 300px;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.pageSubtitle {
+  font-size: 0.9rem;
+  color: #666;
   margin: 0;
+  line-height: 1.4;
 }
 
 .openStudioBtn {
@@ -58,6 +76,8 @@
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
   transition: all 0.2s ease;
+  white-space: nowrap;
+  align-self: center;
 }
 
 .openStudioBtn:hover {
@@ -68,14 +88,6 @@
 /* Filters */
 .filtersWrapper {
   margin-bottom: 24px;
-}
-
-.filtersContainer {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px 20px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
 }
 
 /* Stats + Journey Split */
@@ -91,32 +103,33 @@
 .fiveStatsRow {
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 1;
   gap: 16px;
+  min-width: 60%;
 }
 
 .fiveStatsRow .firstRow {
   display: flex;
   gap: 16px;
-  width: 100%;
+  width: 80%;
 }
 
 .fiveStatsRow .secondRow {
   display: flex;
   gap: 16px;
-  width: 100%;
+  width: 53%;
 }
 
 .fiveStatsRow .statCard {
-  background: #fff;
-  border-radius: 12px;
+  background: #FFFFFF; /* white background */
+  border-radius: 15px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.15); /* x=0, y=1, blur=6, spread=0, color=#00000026 equivalent */
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  min-width: 150px;
+  min-width: 0;
 }
 
 
@@ -145,7 +158,8 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  min-width: 280px;
+  min-width: 35%;
+  max-width: 40%;
   display: flex;
   flex-direction: column;
 }
@@ -317,6 +331,7 @@
   
   .journeyChart {
     max-width: 100%;
+    min-width: 100%;
   }
   
   .fiveStatsRow .statCard {
@@ -351,6 +366,14 @@
   .fiveStatsRow .secondRow {
     flex-direction: column;
   }
+  
+  .fiveStatsRow .firstRow {
+    width: 100%;
+  }
+  
+  .fiveStatsRow .secondRow {
+    width: 100%;
+  }
 }
 
 @media (max-width: 576px) {
@@ -365,5 +388,9 @@
   
   .openStudioBtn {
     width: 100%;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
   }
 }

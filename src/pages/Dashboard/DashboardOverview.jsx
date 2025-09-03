@@ -24,9 +24,9 @@ const DashboardOverview = () => {
   ];
 
   const journeySplitData = [
-    { name: "Pre-Conception", value: 45 },
+    { name: "Preconception", value: 45 },
     { name: "Pregnancy", value: 35 },
-    { name: "Return To Work", value: 20 },
+    { name: "ReturntoWork", value: 20 },
   ];
 
   const COLORS = ["#b4d7f6", "#83b5d5", "#4D9ecd"];
@@ -42,7 +42,7 @@ const DashboardOverview = () => {
   const recentSignupsData = [
     { name: "Alicia Khan", email: "alzha.khung@example.com", company: "Amin Cong", journey: "Pregnancy", signup: "Aug 21, 2024" },
     { name: "Rohan Diaz", email: "ruhan.diaz@example.com", company: "Hong PhiK Co.", journey: "Preconception", signup: "Aug 21, 2024" },
-    { name: "Meech Jyer", email: "meech.jyer@example.com", company: "Dennis Ltd.", journey: "Return to Work", signup: "Aug 20, 2024" },
+    { name: "Meech Jyer", email: "meech.jyer@example.com", company: "Dennis Ltd.", journey: "ReturntoWork", signup: "Aug 20, 2024" },
     { name: "Sanjay R.", email: "sanjayep@example.com", company: "Amin Dong", journey: "Pregnancy", signup: "Aug 18, 2024" },
     { name: "Nana R.", email: "nana.r@example.com", company: "Dennis Ltd.", journey: "Preconception", signup: "Aug 18, 2024" }
   ];
@@ -51,7 +51,7 @@ const DashboardOverview = () => {
     { title: "Trimester-Tester What & What", journey: "Pregnancy", subject: "Health", status: "Published", views: "1800", avgWatch: "8.4m" },
     { title: "TTC Timeline:1 Experience vs Reality", journey: "Preconception", subject: "Health", status: "Published", views: "1410", avgWatch: "7.9m" },
     { title: "Salary & Leave: 1 Know Your Rights", journey: "Pregnancy", subject: "Career", status: "Education", views: "0", avgWatch: "-" },
-    { title: "Investing as a Client (Parent) Going with TTC", journey: "Return to Work", subject: "Finance", status: "History", views: "0", avgWatch: "-" },
+    { title: "Investing as a Client (Parent) Going with TTC", journey: "ReturntoWork", subject: "Finance", status: "History", views: "0", avgWatch: "-" },
     { title: "Going with TTC", journey: "Preconception", subject: "Health", status: "Published", views: "960", avgWatch: "9.1m" }
   ];
 
@@ -59,7 +59,6 @@ const DashboardOverview = () => {
     <div className={styles.dashboardContainer}>
       <Sidebar />
       <div className={styles.contentArea}>
-        {/* Topbar component - it will automatically show the correct title based on route */}
         <Topbar />
         
         <div className={styles.dashboardContent}>
@@ -70,59 +69,18 @@ const DashboardOverview = () => {
 
           {/* Stat Cards */}
           <div className={styles.statGrid}>
-            <StatCard 
-              title="Total Users" 
-              value="1842" 
-              subtitle="Last 30 days" 
-              icon="👥"
-              color="#4D9ecd"
-            />
-            <StatCard 
-              title="Active Users" 
-              value="1842" 
-              subtitle="Last 30 days" 
-              icon="🔥"
-              color="#e91e63"
-            />
-            <StatCard 
-              title="Total Videos" 
-              value="60" 
-              subtitle="Library" 
-              icon="🎬"
-              color="#ff9800"
-            />
-            <StatCard 
-              title="Engagement Rate" 
-              value="60%" 
-              subtitle="Avg across content" 
-              icon="📊"
-              color="#4caf50"
-            />
-            <StatCard 
-              title="Total Watch Time" 
-              value="1,204" 
-              subtitle="Hrs" 
-              icon="⏱️"
-              color="#9c27b0"
-            />
-              <StatCard 
-              title="New Signups" 
-              value="1842" 
-              subtitle="Last 30 Days" 
-              icon="🆕"
-              color="#00bcd4"
-            />
-            <StatCard 
-              title="Avg. Session / User" 
-              value="2.3 M" 
-              subtitle="Last 30 Days" 
-              icon="⏰"
-              color="#ff5722"
-            />
+            <StatCard title="Total Users" value="1842" subtitle="Last 30 days" />
+            <StatCard title="Active Users" value="1842" subtitle="Last 30 days" />
+            <StatCard title="Total Videos" value="60" subtitle="Library" />
+            <StatCard title="Engagement Rate" value="60%" subtitle="Avg across content" />
+            <StatCard title="Total Watch Time" value="1,204" subtitle="Hrs" />
+            <StatCard title="New Signups" value="1842" subtitle="Last 30 Days" />
+            <StatCard title="Avg. Session / User" value="2.3 M" subtitle="Last 30 Days" />
           </div>
 
           {/* Charts */}
           <div className={styles.twoOneGrid}>
+            {/* User Growth */}
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>User Growth</h3>
               <p className={styles.chartSubtitle}>New vs. Active User</p>
@@ -138,32 +96,48 @@ const DashboardOverview = () => {
               </ResponsiveContainer>
             </div>
 
+            {/* Journey Split */}
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>Journey Split (Total Users)</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
-                  <Pie data={journeySplitData} dataKey="value" nameKey="name" outerRadius={80} label>
+                  <Pie
+                    data={journeySplitData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={40}   // ✅ donut style
+                    outerRadius={80}
+                    label={({ value }) => value}
+                  >
                     {journeySplitData.map((entry, i) => (
                       <Cell key={i} fill={COLORS[i % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Legend layout="vertical" verticalAlign="middle" align="right" />
+                  <Legend
+                    layout="horizontal"
+                    verticalAlign="bottom"
+                    align="center"
+                    iconType="circle" // ✅ round bullet legend
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Engagement */}
+          {/* Engagement & Highlights */}
           <div className={styles.twoOneGrid}>
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>Top Performing Videos</h3>
+              <h3 className={styles.chartTitle}>Top Performing Videos by Watch Hours</h3>
+              <p className={styles.chartSubtitle}>Engagement Heatmap</p>
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={engagementData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
                   <XAxis dataKey="name" stroke="#636e72" />
                   <YAxis stroke="#636e72" />
                   <Tooltip />
-                  <Bar dataKey="hours" fill="#D4B7AD" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="hours" fill="#D4B7AD" radius={[20, 20, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -174,13 +148,14 @@ const DashboardOverview = () => {
               <p className={styles.metricLabel}>Avg. minutes watched / user</p>
               <h4 className={styles.subMetricTitle}>Colgate</h4>
               <p className={styles.subMetricValue}>Most active company</p>
-              <h4 className={styles.subMetricTitle}>Pre-Conception</h4>
+              <h4 className={styles.subMetricTitle}>Preconception</h4>
               <p className={styles.subMetricValue}>Most popular journey</p>
             </div>
           </div>
 
           {/* Tables */}
           <div className={styles.twoColumnGrid}>
+            {/* Recent Signups */}
             <div className={styles.dataCard}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>Recent User Signups</h3>
@@ -197,7 +172,11 @@ const DashboardOverview = () => {
                         <td className={styles.nameCell}>{u.name}</td>
                         <td>{u.email}</td>
                         <td>{u.company}</td>
-                        <td><span className={`${styles.journeyTag} ${styles[u.journey.replace(/\s+/g, '')]}`}>{u.journey}</span></td>
+                        <td>
+                          <span className={`${styles.journeyTag} ${styles[u.journey]}`}>
+                            {u.journey}
+                          </span>
+                        </td>
                         <td>{u.signup}</td>
                       </tr>
                     ))}
@@ -206,6 +185,7 @@ const DashboardOverview = () => {
               </div>
             </div>
 
+            {/* Recent Content */}
             <div className={styles.dataCard}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>Recently Added Content</h3>
@@ -219,9 +199,17 @@ const DashboardOverview = () => {
                     {recentContentData.map((c, i) => (
                       <tr key={i}>
                         <td className={styles.titleCell}>{c.title}</td>
-                        <td><span className={`${styles.journeyTag} ${styles[c.journey.replace(/\s+/g, '')]}`}>{c.journey}</span></td>
+                        <td>
+                          <span className={`${styles.journeyTag} ${styles[c.journey]}`}>
+                            {c.journey}
+                          </span>
+                        </td>
                         <td>{c.subject}</td>
-                        <td><span className={`${styles.statusBadge} ${styles[c.status.toLowerCase()]}`}>{c.status}</span></td>
+                        <td>
+                          <span className={`${styles.statusBadge} ${styles[c.status.toLowerCase()]}`}>
+                            {c.status}
+                          </span>
+                        </td>
                         <td>{c.views}</td>
                         <td>{c.avgWatch}</td>
                       </tr>

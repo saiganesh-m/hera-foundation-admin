@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 import Filters from "../../components/Filters";
-import StatCard from "../../components/StatCard";
+
 import usersStyles from "./Users.module.css";
 
 const Users = () => {
@@ -145,14 +145,6 @@ const Users = () => {
         <div className={usersStyles.dashboardContent}>
 
 
-          {/* Stat Cards */}
-          <div className={usersStyles.statGrid}>
-            <StatCard title="Total Users" value={users.length} color="blue" />
-            <StatCard title="Active Users" value={2} color="green" />
-            <StatCard title="Videos Watched" value={127} color="purple" />
-            <StatCard title="Avg. Watch Time" value="6.1m" color="orange" />
-          </div>
-
           {/* Filters Container */}
           <div className={usersStyles.filterContainer}>
             <Filters />
@@ -161,10 +153,7 @@ const Users = () => {
           {/* Users Table */}
           <div className={usersStyles.tableContainer}>
             <div className={usersStyles.tableHeader}>
-              <h3 className={usersStyles.tableTitle}>Users Activity</h3>
-              <div className={usersStyles.tableActions}>
-                <button className={usersStyles.exportButton}>Export CSV</button>
-              </div>
+              <h3 className={usersStyles.tableTitle}>Activity (Filtered Rows)</h3>
             </div>
 
             <div className={usersStyles.tableWrapper}>
@@ -187,12 +176,9 @@ const Users = () => {
                   {users.map((user, index) => (
                     <tr key={index}>
                       <td>
-                        <div className={usersStyles.userInfo}>
-                          <div className={usersStyles.avatar}>
-                            {user.name.charAt(0)}
-                          </div>
-                          <span>{user.name}</span>
-                        </div>
+                    <div className={usersStyles.userInfo}>
+                      <span>{user.name}</span>
+                    </div>
                       </td>
                       <td>
                         <a href={`mailto:${user.email}`} className={usersStyles.emailLink}>
@@ -219,7 +205,7 @@ const Users = () => {
                       </td>
                       <td>
                         <div className={usersStyles.videoCount}>
-                          {user.videos} <span className={usersStyles.videoLabel}>videos</span>
+                          {user.videos} 
                         </div>
                       </td>
                       <td>{user.avgWatch}</td>

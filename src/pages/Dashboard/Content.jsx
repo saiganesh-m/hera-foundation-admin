@@ -470,7 +470,7 @@ const Content = () => {
           </div>
 
           <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Video Library</h3>
+            <h3 className={styles.cardTitle}>Arrange by Subject (Drag and drop)</h3>
             {selectedView === "table" && renderTableView()}
             {selectedView === "preview" && renderPreviewView()}
             {selectedView === "arrange" && renderArrangeView()}

@@ -1,17 +1,21 @@
-/* Topbar.module.css */
+body {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
 .topbarContainer {
   position: fixed;
   top: 0;
   left: 200px;
   right: 0;
-  height: 80px; /* Increased height */
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  height: 80px;
+  background: linear-gradient(135deg, #ffffff, #f9f9fb);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
-  padding: 0 25px; /* Slightly more padding */
+  padding: 0 25px;
   z-index: 999;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   transition: left 0.3s ease;
 }
 
@@ -29,41 +33,36 @@
 }
 
 .pageTitle {
-  font-size: 1.6rem; /* Slightly larger for balance */
-  font-weight: 600;
-  margin: 0;
-  color: #2d3436;
-  line-height: 1.4; /* Better spacing */
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .pageSubtitle {
-  font-size: 14px;
-  color: #636e72;
-  margin: 4px 0 0 0; /* More breathing room */
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .exportButton {
-  padding: 10px 18px; /* Adjusted for bigger topbar */
+  padding: 10px 18px;
   background: #AB1A52;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
-  margin-left: 20px;
-}
-
-.exportButton:hover {
-  background: #8e1444;
+  font-style: semi-bold;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .topbarContainer {
     left: 0;
-    height: 70px; /* Smaller but still taller than before */
+    height: 70px;
     padding: 0 15px;
   }
 
@@ -83,7 +82,7 @@
 
 @media (max-width: 480px) {
   .topbarContainer {
-    height: 65px; /* Keep it compact on very small screens */
+    height: 65px;
   }
 
   .pageTitle {
@@ -97,5 +96,6 @@
   .exportButton {
     margin-left: 10px;
     padding: 6px 12px;
+    font-size: 11px;
   }
 }

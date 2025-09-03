@@ -1,16 +1,26 @@
 import React from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, BarChart, Bar, Legend
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
 } from "recharts";
-import Sidebar from "../../components/Sidebar"; 
+import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
-import Filters from "../../components/Filters"; 
-import StatCard from "../../components/StatCard"; 
+import Filters from "../../components/Filters";
+import StatCard from "../../components/StatCard";
 import styles from "./Analytics.module.css";
 
 const Analytics = () => {
-  // Mock data for the analytics page
+  // Mock data
   const dailyActiveUsers = [
     { date: "01-08-2025", value: 1842 },
     { date: "06-08-2025", value: 1900 },
@@ -42,138 +52,156 @@ const Analytics = () => {
     { subject: "Healthy Lifestyle", participation: 100 },
   ];
 
-  const COLORS = ['#D4B7AD', '#E3CDC2', '#F7DCC8'];
-  const CARD_COLORS = ['#4D9ECD', '#AB1A52', '#6A7FDB', '#38B2AC', '#9F7AEA', '#ED8936'];
+  // Colors
+  const COLORS = ["#D4B7AD", "#E3CDC2", "#F7DCC8"];
+  const CARD_COLORS = [
+    "#4D9ECD",
+    "#AB1A52",
+    "#6A7FDB",
+    "#38B2AC",
+    "#9F7AEA",
+    "#ED8936",
+  ];
 
   return (
     <div className={styles.dashboardContainer}>
       <Sidebar />
       <div className={styles.contentArea}>
-        <Topbar /> 
-        
-        <div className={styles.dashboardContent}>
+        <Topbar />
 
+        <div className={styles.dashboardContent}>
           {/* Filters Section */}
           <div className={styles.filterContainer}>
             <Filters />
           </div>
 
-          {/* Stat Cards Section - All 6 cards in one row */}
+          {/* Stat Cards */}
           <div className={styles.statGrid}>
-            <StatCard 
-              title="Daily Active Users" 
-              value="1842" 
-              subtitle="Last 28 days" 
+            <StatCard
+              title="Daily Active Users"
+              value="1842"
+              subtitle="Last 28 days"
               color={CARD_COLORS[0]}
-              trend={{value: 5.2, isPositive: true}}
+              trend={{ value: 5.2, isPositive: true }}
             />
-            <StatCard 
-              title="Total Sessions" 
-              value="1842" 
-              subtitle="Last 28 days" 
+            <StatCard
+              title="Total Sessions"
+              value="1842"
+              subtitle="Last 28 days"
               color={CARD_COLORS[1]}
-              trend={{value: 3.7, isPositive: true}}
+              trend={{ value: 3.7, isPositive: true }}
             />
-            <StatCard 
-              title="Total Videos Watched" 
-              value="60" 
-              subtitle="All Journey | All Subjects" 
+            <StatCard
+              title="Total Videos Watched"
+              value="60"
+              subtitle="All Journey | All Subjects"
               color={CARD_COLORS[2]}
-              trend={{value: 8.1, isPositive: true}}
+              trend={{ value: 8.1, isPositive: true }}
             />
-            <StatCard 
-              title="Total Watch Minutes" 
-              value="4763" 
-              subtitle="All Journey | All Subjects" 
+            <StatCard
+              title="Total Watch Minutes"
+              value="4763"
+              subtitle="All Journey | All Subjects"
               color={CARD_COLORS[3]}
-              trend={{value: 12.4, isPositive: true}}
+              trend={{ value: 12.4, isPositive: true }}
             />
-            <StatCard 
-              title="Avg Session / User" 
-              value="1.21" 
-              subtitle="Last 25 days" 
+            <StatCard
+              title="Avg Session / User"
+              value="1.21"
+              subtitle="Last 25 days"
               color={CARD_COLORS[4]}
-              trend={{value: 2.3, isPositive: true}}
+              trend={{ value: 2.3, isPositive: true }}
             />
-            <StatCard 
-              title="Avg. Videos / User" 
-              value="1.98" 
-              subtitle="Last 28 days" 
+            <StatCard
+              title="Avg. Videos / User"
+              value="1.98"
+              subtitle="Last 28 days"
               color={CARD_COLORS[5]}
-              trend={{value: 1.5, isPositive: true}}
+              trend={{ value: 1.5, isPositive: true }}
             />
-            <StatCard 
-              title="Avg. Watch Minutes / User" 
-              value="13.5" 
-              subtitle="Last 28 days" 
+            <StatCard
+              title="Avg. Watch Minutes / User"
+              value="13.5"
+              subtitle="Last 28 days"
               color="#48BB78"
-              trend={{value: 4.2, isPositive: true}}
+              trend={{ value: 4.2, isPositive: true }}
             />
           </div>
 
-          {/* User Engagement and Users by Journey */}
+          {/* User Engagement & Users by Journey */}
           <div className={styles.twoOneGrid}>
+            {/* Line Chart */}
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>User Engagement</h3>
-              <p className={styles.chartSubtitle}>Content Consumption Over Time</p>
+              <p className={styles.chartSubtitle}>
+                Content Consumption Over Time
+              </p>
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={dailyActiveUsers}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
-                  <XAxis dataKey="date" stroke="#636e72" />
-                  <YAxis stroke="#636e72" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      borderRadius: '8px', 
-                      border: '1px solid #e0e6ed',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                  <XAxis dataKey="date" stroke="#757575" fontSize={12} />
+                  <YAxis stroke="#757575" fontSize={12} />
+                  <Tooltip
+                    contentStyle={{
+                      borderRadius: "8px",
+                      border: "1px solid #e0e6ed",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="value" 
-                    stroke="#4D9ECD" 
-                    strokeWidth={2} 
-                    dot={{ r: 4 }} 
-                    activeDot={{ r: 6 }} 
+                  <Line
+                    type="monotone"
+                    dataKey="value"
+                    stroke="#4D9ECD"
+                    strokeWidth={2}
+                    dot={{ r: 3, fill: "#4D9ECD" }}
+                    activeDot={{ r: 5, fill: "#4D9ECD" }}
                   />
                 </LineChart>
               </ResponsiveContainer>
             </div>
 
+            {/* Donut Chart */}
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>Users by Journey</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <PieChart>
-                  <Pie 
-                    data={usersByJourney} 
-                    dataKey="value" 
-                    nameKey="name" 
-                    cx="50%" 
-                    cy="50%" 
-                    outerRadius={80} 
-                    innerRadius={60}
+                  <Pie
+                    data={usersByJourney}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    innerRadius={50}
+                    startAngle={90}
+                    endAngle={450}
                     labelLine={false}
                     label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                   >
                     {usersByJourney.map((entry, index) => (
-                      <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                      <Cell
+                        key={index}
+                        fill={COLORS[index % COLORS.length]}
+                      />
                     ))}
                   </Pie>
-                  <Tooltip 
+                  <Tooltip
                     formatter={(value, name) => [`${value}%`, name]}
-                    contentStyle={{ 
-                      borderRadius: '8px', 
-                      border: '1px solid #e0e6ed',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
+                    contentStyle={{
+                      borderRadius: "8px",
+                      border: "1px solid #e0e6ed",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
                   />
                 </PieChart>
               </ResponsiveContainer>
+
+              {/* Custom Legend */}
               <div className={styles.pieLegend}>
                 {usersByJourney.map((item, index) => (
                   <div key={index} className={styles.legendItem}>
-                    <span 
-                      className={styles.legendColor} 
+                    <span
+                      className={styles.legendColor}
                       style={{ backgroundColor: COLORS[index] }}
                     ></span>
                     <span className={styles.legendText}>
@@ -185,64 +213,75 @@ const Analytics = () => {
             </div>
           </div>
 
-          {/* No. of users by company and Top B Participation by Subject */}
+          {/* Users by Company & Top B Participation */}
           <div className={styles.twoOneGrid}>
+            {/* Bar Chart - Users by Company */}
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>No. of users by Company</h3>
+              <h3 className={styles.chartTitle}>No. of Users by Company</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={usersByCompany}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
-                  <XAxis dataKey="company" stroke="#636e72" />
-                  <YAxis stroke="#636e72" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      borderRadius: '8px', 
-                      border: '1px solid #e0e6ed',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                  <XAxis dataKey="company" stroke="#757575" fontSize={12} />
+                  <YAxis stroke="#757575" fontSize={12} />
+                  <Tooltip
+                    contentStyle={{
+                      borderRadius: "8px",
+                      border: "1px solid #e0e6ed",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
                   />
-                  <Bar dataKey="users" fill="#D4B7AD" radius={[4, 4, 0, 0]} /> 
+                  <Bar
+                    dataKey="users"
+                    fill="#D4B7AD"
+                    radius={[10, 10, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
 
+            {/* Bar Chart - Participation by Subject */}
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>Top B Participation by Subject</h3>
+              <h3 className={styles.chartTitle}>
+                Top B Participation by Subject
+              </h3>
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={topParticipationBySubject} margin={{ bottom: 60 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
-                  <XAxis 
-                    dataKey="subject" 
-                    angle={-45} 
-                    textAnchor="end" 
-                    height={80} 
-                    interval={0} 
-                    stroke="#636e72" 
+                <BarChart
+                  data={topParticipationBySubject}
+                  margin={{ bottom: 60 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                  <XAxis
+                    dataKey="subject"
+                    angle={-45}
+                    textAnchor="end"
+                    height={80}
+                    interval={0}
+                    stroke="#757575"
                     fontSize={12}
-                  /> 
-                  <YAxis stroke="#636e72" />
-                  <Tooltip 
-                    contentStyle={{ 
-                      borderRadius: '8px', 
-                      border: '1px solid #e0e6ed',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
                   />
-                  <Bar dataKey="participation" fill="#4D9ECD" radius={[4, 4, 0, 0]} /> 
+                  <YAxis stroke="#757575" fontSize={12} />
+                  <Tooltip
+                    contentStyle={{
+                      borderRadius: "8px",
+                      border: "1px solid #e0e6ed",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    }}
+                  />
+                  <Bar
+                    dataKey="participation"
+                    fill="#4D9ECD"
+                    radius={[10, 10, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Activity (Filtered Rows) Table */}
+          {/* Table */}
           <div className={styles.tableContainer}>
             <div className={styles.tableHeader}>
               <h3 className={styles.tableTitle}>Activity (Filtered Rows)</h3>
-              <button className={styles.exportButton}>
-                Export CSV
-              </button>
             </div>
-            
             <table className={styles.dataTable}>
               <thead>
                 <tr>

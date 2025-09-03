@@ -21,6 +21,7 @@ const YoutubeAnalytics = () => {
     { name: "Pregnancy Journey", value: 3310 },
     { name: "Return To Work Journey", value: 880 },
   ];
+
   const COLORS = ["#F7DCC8", "#D4B7AD", "#E3CDC2"];
 
   const leastPerforming = [
@@ -48,7 +49,7 @@ const YoutubeAnalytics = () => {
       subject: "Mental Health",
       type: "Video",
       views: 1116,
-      watchTime: 744,
+      watchTime: 744, // in minutes
       avgDuration: "4m",
       retention: "45%",
     },
@@ -60,7 +61,7 @@ const YoutubeAnalytics = () => {
       subject: "Mental Health",
       type: "Video",
       views: 1533,
-      watchTime: 1027,
+      watchTime: 1027, // in minutes
       avgDuration: "6m",
       retention: "48%",
     },
@@ -72,7 +73,7 @@ const YoutubeAnalytics = () => {
       subject: "Work-Life Balance",
       type: "Podcast",
       views: 980,
-      watchTime: 820,
+      watchTime: 820, // in minutes
       avgDuration: "8m",
       retention: "55%",
     },
@@ -84,11 +85,16 @@ const YoutubeAnalytics = () => {
       subject: "Finance",
       type: "Webinar",
       views: 2100,
-      watchTime: 1800,
+      watchTime: 1800, // in minutes
       avgDuration: "10m",
       retention: "60%",
     },
   ];
+
+  // Convert minutes to hours for display
+  const formatWatchTime = (minutes) => {
+    return (minutes / 60).toFixed(1);
+  };
 
   return (
     <div className={styles.analyticsContainer}>
@@ -100,10 +106,17 @@ const YoutubeAnalytics = () => {
       {/* Main Content */}
       <div className={styles.mainContent}>
         <div className={styles.contentWrapper}>
-          {/* Page Header */}
+          {/* Page Header - Fixed duplicate structure */}
           <div className={styles.pageHeader}>
-            <h1>YouTube Analytics</h1>
-            <button className={styles.openStudioBtn}>Open YouTube Studio</button>
+            <div className={styles.headerText}>
+              <h2 className={styles.pageTitle}>Youtube Analytics</h2>
+              <p className={styles.pageSubtitle}>
+               All data and statistics drawn from YouTube studio and platform
+              </p>
+            </div>
+            <button className={styles.openStudioBtn}>
+              Open YouTube Studio
+            </button>
           </div>
 
           {/* Filters */}
@@ -124,17 +137,17 @@ const YoutubeAnalytics = () => {
                   <div className={styles.statValue}>17,300</div>
                   <div className={styles.statSubtitle}>Last 25 Days</div>
                 </div>
-                
                 <div className={styles.statCard}>
                   <div className={styles.statTitle}>Unique Viewers</div>
                   <div className={styles.statValue}>12,370</div>
                   <div className={styles.statSubtitle}>Unique Users</div>
                 </div>
-                
                 <div className={styles.statCard}>
                   <div className={styles.statTitle}>Total Watch Time</div>
                   <div className={styles.statValue}>6,480 hrs</div>
-                  <div className={styles.statSubtitle}>All Journeys | All Subjects</div>
+                  <div className={styles.statSubtitle}>
+                    All Journeys | All Subjects
+                  </div>
                 </div>
               </div>
 
@@ -145,7 +158,6 @@ const YoutubeAnalytics = () => {
                   <div className={styles.statValue}>7.2m</div>
                   <div className={styles.statSubtitle}>Last 25 Days</div>
                 </div>
-                
                 <div className={styles.statCard}>
                   <div className={styles.statTitle}>Avg. Retention</div>
                   <div className={styles.statValue}>48.5%</div>
@@ -167,24 +179,31 @@ const YoutubeAnalytics = () => {
                       innerRadius={60}
                       outerRadius={80}
                       dataKey="value"
-                      label={({name, percent}) => `${(percent * 100).toFixed(0)}%`}
+                      label={({ name, percent }) =>
+                        `${(percent * 100).toFixed(0)}%`
+                      }
                     >
                       {journeyData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
                       ))}
                     </Pie>
-                    <Tooltip formatter={(value) => [`${value} users`, '']} />
+                    <Tooltip formatter={(value) => [`${value} users`, ""]} />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
               <div className={styles.legend}>
                 {journeyData.map((item, idx) => (
-                  <div key={idx} className={styles.legendItem}>
+                  <div key={`legend-${idx}`} className={styles.legendItem}>
                     <span
                       className={styles.legendDot}
                       style={{ background: COLORS[idx] }}
                     ></span>
-                    <span className={styles.legendText}>{item.name} ({item.value})</span>
+                    <span className={styles.legendText}>
+                      {item.name} ({item.value})
+                    </span>
                   </div>
                 ))}
               </div>
@@ -196,11 +215,23 @@ const YoutubeAnalytics = () => {
             <div className={styles.chartCard}>
               <h4>Least Performing Videos (Watch Time)</h4>
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={leastPerforming} margin={{ bottom: 30 }}>
-                  <XAxis dataKey="name" interval={0} angle={-30} textAnchor="end" />
+                <BarChart
+                  data={leastPerforming}
+                  margin={{ bottom: 30 }}
+                >
+                  <XAxis
+                    dataKey="name"
+                    interval={0}
+                    angle={-30}
+                    textAnchor="end"
+                  />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#D4B7AD" radius={[4, 4, 0, 0]} />
+                  <Bar
+                    dataKey="value"
+                    fill="#D4B7AD"
+                    radius={[4, 4, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -208,11 +239,23 @@ const YoutubeAnalytics = () => {
             <div className={styles.chartCard}>
               <h4>Top Performing Videos (Watch Time)</h4>
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={topPerforming} margin={{ bottom: 30 }}>
-                  <XAxis dataKey="name" interval={0} angle={-30} textAnchor="end" />
+                <BarChart
+                  data={topPerforming}
+                  margin={{ bottom: 30 }}
+                >
+                  <XAxis
+                    dataKey="name"
+                    interval={0}
+                    angle={-30}
+                    textAnchor="end"
+                  />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#4D9ECD" radius={[4, 4, 0, 0]} />
+                  <Bar
+                    dataKey="value"
+                    fill="#4D9ECD"
+                    radius={[4, 4, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -239,16 +282,32 @@ const YoutubeAnalytics = () => {
                 {videoTable.map((video) => (
                   <tr key={video.id}>
                     <td>
-                      <img src={video.thumbnail} alt="thumb" className={styles.thumb} />
+                      <img
+                        src={video.thumbnail}
+                        alt="thumb"
+                        className={styles.thumb}
+                      />
                     </td>
                     <td>{video.title}</td>
-                    <td><span className={styles.journeyTag}>{video.journey}</span></td>
+                    <td>
+                      <span className={styles.journeyTag}>{video.journey}</span>
+                    </td>
                     <td>{video.subject}</td>
-                    <td><span className={styles.typeBadge}>{video.type}</span></td>
-                    <td className={styles.boldText}>{video.views.toLocaleString()}</td>
-                    <td className={styles.boldText}>{(video.watchTime / 60).toFixed(1)}</td>
+                    <td>
+                      <span className={styles.typeBadge}>{video.type}</span>
+                    </td>
+                    <td className={styles.boldText}>
+                      {video.views.toLocaleString()}
+                    </td>
+                    <td className={styles.boldText}>
+                      {formatWatchTime(video.watchTime)}
+                    </td>
                     <td>{video.avgDuration}</td>
-                    <td><span className={styles.retentionPill}>{video.retention}</span></td>
+                    <td>
+                      <span className={styles.retentionPill}>
+                        {video.retention}
+                      </span>
+                    </td>
                   </tr>
                 ))}
               </tbody>

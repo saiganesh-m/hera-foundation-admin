@@ -1,11 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom"; // Import hook
+import { useLocation } from "react-router-dom";
 import styles from "./Topbar.module.css";
 
 const Topbar = () => {
   const location = useLocation();
 
-  // Define titles for each route
   const pageTitles = {
     "/dashboardoverview": "Dashboard Overview",
     "/analytics": "Analytics",
@@ -13,7 +12,6 @@ const Topbar = () => {
     "/profile": "Profile",
   };
 
-  // Default to "Dashboard" if no match
   const currentTitle = pageTitles[location.pathname] || "Dashboard";
 
   return (

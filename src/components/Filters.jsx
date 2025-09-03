@@ -5,10 +5,14 @@ const Filters = () => {
   const [company, setCompany] = useState("All Companies");
   const [subject, setSubject] = useState("All Subjects");
   const [date, setDate] = useState("Last 30 Days");
+  const [journey, setJourney] = useState("All Journeys");
 
   const companies = ["All Companies", "Company 1", "Company 2", "Company 3", "Company 4"];
   const subjects = ["All Subjects", "Health", "Career", "Mental Health", "Finance"];
   const dates = ["Last 7 days", "Last 30 Days", "Last 60 Days", "Last 90 Days", "Custom"];
+
+  // ✅ Better journey options
+  const journeys = ["All Journeys", "Onboarding", "Learning", "Wellbeing", "Career Growth"];
 
   return (
     <div className={styles.filtersContainer}>
@@ -22,6 +26,20 @@ const Filters = () => {
         >
           {companies.map((c) => (
             <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Journey */}
+      <div className={styles.filterGroup}>
+        <label className={styles.filterLabel}>Journey</label>
+        <select
+          value={journey}
+          onChange={(e) => setJourney(e.target.value)}
+          className={styles.filterSelect}
+        >
+          {journeys.map((j) => (
+            <option key={j} value={j}>{j}</option>
           ))}
         </select>
       </div>

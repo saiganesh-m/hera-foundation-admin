@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import styles from "./Profile.module.css";
+import Logo from "./logo1.png";
 
 const Profile = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -34,17 +35,30 @@ const Profile = () => {
           <div className={styles.leftColumn}>
             <div className={styles.profileCard}>
               <div className={styles.avatarContainer}>
-                <div className={styles.avatar}>HA</div>
-                <h3 className={styles.userName}>Hera Admin</h3>
-                <p className={styles.userRole}>Admin Console</p>
+                <div className={styles.heraAdminLogo} style={{display: 'flex', alignItems: 'center', gap: '16px'}}>
+                  <img src={Logo} alt="Hera Logo" className={styles.logoImage} />
+                  <div>
+                    <h3 className={styles.userName}>Hera Admin</h3>
+                    <p className={styles.userRole}>Admin Console</p>
+                  </div>
+                </div>    
                 
-                <div className={styles.uploadContainer}>
-                  <label className={styles.uploadLabel}>
-                    Choose File
-                    <input type="file" className={styles.uploadInput} />
-                  </label>
-                  <span className={styles.fileText}>No file chosen</span>
-                </div>
+            <div className={styles.uploadContainer}>
+              <input
+                type="file"
+                id="fileUpload"
+                className={styles.uploadInput}
+                onChange={(e) =>
+                  e.target.nextElementSibling.nextElementSibling.innerText =
+                    e.target.files[0]?.name || "No file chosen"
+                }
+              />
+              <label htmlFor="fileUpload" className={styles.uploadLabel}>
+                Choose File
+              </label>
+              <span className={styles.fileText}>No file chosen</span>
+            </div>
+
               </div>
             </div>
             
