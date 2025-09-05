@@ -164,29 +164,32 @@ const Profile = () => {
             </div>
             
             <div className={styles.legalCard}>
-              <h3 className={styles.legalTitle}>About & Legal</h3>
-              <div className={styles.legalInfo}>
-                <p className={styles.legalItem}>
-                  App version : <span className={styles.legalValue}>0.1.0</span>
-                </p>
-                <p className={styles.legalItem}>
-                  Build : <span className={styles.legalValue}>MVP-Admin</span>  
-                </p>
-                <p className={styles.legalItem}>
-                  Region : <span className={styles.legalValue}>IN</span>
-                </p>
-                <p className={styles.legalLinks}>
-                  Links :{" "}
-                  <a href="#" className={styles.link}>
-                    Terms of Service
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className={styles.link}>
-                    Privacy Policy
-                  </a>
-                </p>
-              </div>
+          <h3 className={styles.legalTitle}>About & Legal</h3>
+          <div className={styles.legalInfo}>
+            <div className={styles.legalRow}>
+              <p className={styles.legalItem}>
+                App version: <span className={styles.legalValue}>0.1.0</span>
+              </p>
+              <p className={styles.legalItem}>
+                Build: <span className={styles.legalValue}>MVP-Admin</span>
+              </p>
+              <p className={styles.legalItem}>
+                Region: <span className={styles.legalValue}>IN</span>
+              </p>
             </div>
+            <p className={styles.legalLinks}>
+              Links:{" "}
+              <a href="#" className={styles.link}>
+                Terms of Service
+              </a>{" "}
+              &{" "}
+              <a href="#" className={styles.link}>
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
+
           </div>
         </div>
       </div>

@@ -1,7 +1,10 @@
+/* ------------------------------
+   Base Layout
+------------------------------- */
 body {
   font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
-/* Analytics.module.css */
+
 .dashboardContainer {
   display: flex;
   min-height: 100vh;
@@ -11,8 +14,8 @@ body {
 
 .contentArea {
   flex: 1;
-  margin-left: 200px; /* space for Sidebar */
-  padding-top: 75px;  /* space for Topbar */
+  margin-left: 200px;       /* space for Sidebar */
+  padding-top: 75px;        /* space for Topbar */
   background-color: #f9f9f9;
   min-height: 100vh;
   overflow-y: auto;
@@ -22,7 +25,9 @@ body {
   padding: 24px;
 }
 
-/* Header */
+/* ------------------------------
+   Page Headers
+------------------------------- */
 .pageHeader {
   margin-bottom: 24px;
 }
@@ -42,9 +47,9 @@ body {
   font-weight: 500;
 }
 
-
-
-/* Stat Cards Grid */
+/* ------------------------------
+   Stat Cards Grid
+------------------------------- */
 .statGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -52,25 +57,12 @@ body {
   margin-bottom: 20px;
 }
 
-/* Make sure cards are styled consistently */
-.statCard {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e6ed;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.statCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-/* Chart grids */
+/* ------------------------------
+   Chart Cards
+------------------------------- */
 .twoOneGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 30px;
   margin-bottom: 2rem;
 }
@@ -104,11 +96,14 @@ body {
   font-weight: 500;
 }
 
+/* ------------------------------
+   Pie Legend
+------------------------------- */
 .pieLegend {
   display: flex;
-  flex-wrap: wrap;      /* allows wrapping */
-  justify-content: center; /* keeps them centered */
-  gap: 8px 20px;        /* reduce gap between items */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
   margin-top: 16px;
 }
 
@@ -116,7 +111,7 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  flex: 0 0 auto;       /* keep items compact (no stretching) */
+  flex: 0 0 auto;
 }
 
 .legendColor {
@@ -132,8 +127,9 @@ body {
   font-weight: 500;
 }
 
-
-/* Table */
+/* ------------------------------
+   Table
+------------------------------- */
 .tableContainer {
   background: #fff;
   border-radius: 16px;
@@ -192,102 +188,55 @@ body {
 .dataTable tr:hover {
   background-color: #f1f5f9;
 }
+.manageContent {
+  font-size: 14px;
+  color: #AB1A52;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
 
-/* 📱 Responsive */
+/* ------------------------------
+   Responsive
+------------------------------- */
 @media (max-width: 1600px) {
-  .statGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .singleStatCard {
-    width: calc(50% - 10px);
-  }
+  .statGrid { grid-template-columns: repeat(5, 1fr); }
 }
 
 @media (max-width: 1200px) {
-  .statGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .twoOneGrid {
-    grid-template-columns: 1fr;
-  }
+  .statGrid { grid-template-columns: repeat(3, 1fr); }
+  .twoOneGrid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 992px) {
-  .contentArea {
-    margin-left: 0;
-  }
+  .contentArea { margin-left: 0; }
+  .dashboardContent { padding: 16px; }
+  .pageTitle { font-size: 24px; }
+  .pageSubtitle { font-size: 14px; }
+  .tableContainer { padding: 16px; }
+}
 
-  .dashboardContent {
-    padding: 16px;
-  }
-
-  .statGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .singleStatCard {
-    width: 100%;
-  }
-
-  .pageTitle {
-    font-size: 24px;
-  }
-
-  .pageSubtitle {
-    font-size: 14px;
-  }
-
-  .tableContainer {
-    padding: 16px;
-  }
+@media (max-width: 900px) {
+  .statGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .dashboardContent {
-    padding: 10px;
-  }
+  .dashboardContent { padding: 10px; }
+  .filterContainer, .chartCard { padding: 16px; }
+  .dataTable th, .dataTable td { padding: 10px; font-size: 13px; }
+  .dataTable { min-width: 600px; }
+  .pieLegend { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}
 
-  .filterContainer, .chartCard {
-    padding: 16px;
-  }
-
-  .dataTable th, .dataTable td {
-    padding: 10px;
-    font-size: 13px;
-  }
-
-  .dataTable {
-    min-width: 600px;
-  }
-
-  .pieLegend {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+@media (max-width: 600px) {
+  .statGrid { grid-template-columns: 1fr; }
+  .dashboardContent { padding: 16px; }
 }
 
 @media (max-width: 480px) {
-  .pageTitle {
-    font-size: 20px;
-  }
-
-  .chartTitle {
-    font-size: 16px;
-  }
-
-  .chartSubtitle {
-    font-size: 13px;
-  }
-
-  .filterContainer, .chartCard {
-    padding: 12px;
-    border-radius: 12px;
-  }
-
-  .legendText {
-    font-size: 12px;
-  }
+  .pageTitle { font-size: 20px; }
+  .chartTitle { font-size: 16px; }
+  .chartSubtitle { font-size: 13px; }
+  .filterContainer, .chartCard { padding: 12px; border-radius: 12px; }
+  .legendText { font-size: 12px; }
 }

@@ -30,8 +30,8 @@ const Content = () => {
       title: "Lorem Ipsum",
       journey: "Preconception Journey",
       subject: "Health",
-      contentType: "Deep Dive",
-      status: "Scheduled",
+      contentType: "Quick Bite", // Changed to Quick Bite for screenshot
+      status: "Live", // Changed to Live for screenshot
       publishedOn: "28-08-2025",
       views: "1,440",
       avgWatch: "7.9m",
@@ -90,7 +90,7 @@ const Content = () => {
       title: "Lorem Ipsum",
       journey: "Preconception Journey",
       subject: "Health",
-      contentType: "Quick Bite",
+      contentType: "Deep Dive", // Changed to Deep Dive for screenshot
       status: "Live",
       publishedOn: "28-08-2025",
       views: "1,440",
@@ -109,9 +109,57 @@ const Content = () => {
       avgWatch: "7.9m",
       thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
     },
+    {
+      id: 9,
+      title: "Negotiating Work Policies",
+      journey: "Pregnancy Journey",
+      subject: "Mental Health",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "28-08-2025",
+      views: "1,440",
+      avgWatch: "7.9m",
+      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+    },
+    {
+      id: 10,
+      title: "Negotiating Work Policies",
+      journey: "Pregnancy Journey",
+      subject: "Finance",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "28-08-2025",
+      views: "1,440",
+      avgWatch: "7.9m",
+      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+    },
+    {
+      id: 11,
+      title: "Negotiating Work Policies",
+      journey: "Pregnancy Journey",
+      subject: "Career",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "28-08-2025",
+      views: "1,440",
+      avgWatch: "7.9m",
+      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+    },
+    {
+      id: 12,
+      title: "Negotiating Work Policies",
+      journey: "Pregnancy Journey",
+      subject: "Finance",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "28-08-2025",
+      views: "1,440",
+      avgWatch: "7.9m",
+      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+    },
   ]);
 
-  const [selectedView, setSelectedView] = useState("table");
+  const [selectedView, setSelectedView] = useState("arrange"); // Changed default to arrange
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleDropdown = (id) => {
@@ -120,7 +168,8 @@ const Content = () => {
 
   const handleEdit = (id) => {
     console.log("Edit video with id:", id);
-    // Implement edit functionality
+    // Implement edit modal functionality here
+    alert(`Edit functionality for video ID: ${id}. Imagine a modal opening here.`);
   };
 
   const handleLive = (id) => {
@@ -141,6 +190,19 @@ const Content = () => {
   const handleDelete = (id) => {
     console.log("Delete video with id:", id);
     // Implement delete functionality
+  };
+
+  const getJourneyChipColor = (journey) => {
+    switch (journey) {
+      case "Preconception Journey":
+        return styles.journeyChipPreconception;
+      case "Pregnancy Journey":
+        return styles.journeyChipPregnancy;
+      case "Return To Work Journey":
+        return styles.journeyChipReturnToWork;
+      default:
+        return "";
+    }
   };
 
   const renderTableView = () => (
@@ -179,7 +241,11 @@ const Content = () => {
               <td className={`${styles.tableCell} ${styles.titleCell}`}>
                 {video.title}
               </td>
-              <td className={styles.tableCell}>{video.journey}</td>
+              <td className={styles.tableCell}>
+                <span className={`${styles.journeyChip} ${getJourneyChipColor(video.journey)}`}>
+                  {video.journey}
+                </span>
+              </td>
               <td className={styles.tableCell}>{video.subject}</td>
               <td className={styles.tableCell}>{video.contentType}</td>
               <td className={styles.tableCell}>
@@ -267,7 +333,7 @@ const Content = () => {
             </div>
           </div>
           <div className={styles.cardContent}>
-            <p className={styles.cardStatus}>Your rights and craft confident</p>
+            {/* Removed "Your rights and craft confident" */}
             <h4 className={styles.cardTitle}>{v.title}</h4>
             <p className={styles.cardMeta}>
               {v.journey} • {v.subject}
@@ -299,58 +365,98 @@ const Content = () => {
   );
 
   const renderArrangeView = () => {
-    const groupedBySubject = videos.reduce((acc, video) => {
-      const subject = video.subject;
-      if (!acc[subject]) acc[subject] = [];
-      acc[subject].push(video);
+    // Group videos by journey and then by subject for the arrange view structure
+    const groupedByJourneyAndSubject = videos.reduce((acc, video) => {
+      if (!acc[video.journey]) {
+        acc[video.journey] = {};
+      }
+      if (!acc[video.journey][video.subject]) {
+        acc[video.journey][video.subject] = [];
+      }
+      acc[video.journey][video.subject].push(video);
       return acc;
     }, {});
 
     return (
       <div className={styles.arrangeGrid}>
-        {Object.entries(groupedBySubject).map(([subject, vids]) => (
-          <div key={subject} className={styles.arrangeCardWrapper}>
-            <div className={styles.arrangeHeader}>
-              <span className={styles.arrangeSubject}>{subject}</span>
-              {vids[0] && (
-                <span
-                  className={`${styles.arrangeContentTypeBadge} ${
-                    vids[0].contentType === "Deep Dive"
-                      ? styles.deepDive
-                      : styles.quickBite
-                  }`}
+        {Object.entries(groupedByJourneyAndSubject).map(
+          ([journey, subjects]) => (
+            <React.Fragment key={journey}>
+              {Object.entries(subjects).map(([subject, vids]) => (
+                <div
+                  key={`${journey}-${subject}`}
+                  className={styles.arrangeCardWrapper}
+                  // draggable
+                  // onDragStart={(e) => {
+                  //   e.dataTransfer.setData("text/plain", JSON.stringify({ journey, subject }));
+                  // }}
+                  // onDragOver={(e) => e.preventDefault()}
+                  // onDrop={(e) => {
+                  //   e.preventDefault();
+                  //   const droppedData = JSON.parse(e.dataTransfer.getData("text/plain"));
+                  //   console.log("Dropped on:", { journey, subject }, "from:", droppedData);
+                  //   // Logic to reorder/move cards here
+                  // }}
                 >
-                  {vids[0].contentType}
-                </span>
-              )}
-            </div>
-
-            {vids[0] && (
-              <p className={styles.arrangeJourney}>{vids[0].journey}</p>
-            )}
-
-            <div className={styles.arrangeVideoList}>
-              {vids.map((v) => (
-                <div key={v.id} className={styles.arrangeVideoItem}>
-                  <img
-                    src={v.thumbnail}
-                    alt={v.title}
-                    className={styles.arrangeVideoThumbnail}
-                  />
-                  <div className={styles.arrangeVideoDetails}>
-                    <p className={styles.arrangeVideoTitle}>{v.title}</p>
-                    <p className={styles.arrangeVideoMeta}>
-                      {v.status} • {v.views} views
-                    </p>
+                  <div className={styles.arrangeHeader}>
+                    <span className={styles.arrangeSubject}>{subject}</span>
+                    {/* Displaying content type of the first video in the group */}
+                    {vids[0] && (
+                      <span
+                        className={`${styles.arrangeContentTypeBadge} ${
+                          vids[0].contentType === "Deep Dive"
+                            ? styles.deepDive
+                            : styles.quickBite
+                        }`}
+                      >
+                        {vids[0].contentType}
+                      </span>
+                    )}
                   </div>
-                  <button className={styles.arrangePreviewButton}>
-                    Preview
-                  </button>
+                  {/* Displaying journey for the group */}
+                  <p className={styles.arrangeJourney}>{journey}</p>
+
+                  <div className={styles.arrangeVideoList}>
+                    {vids.map((v) => (
+                      <div
+                        key={v.id}
+                        className={styles.arrangeVideoItem}
+                        // draggable
+                        // onDragStart={(e) => {
+                        //   e.stopPropagation(); // Prevent parent drag from triggering
+                        //   e.dataTransfer.setData("text/plain", JSON.stringify({ videoId: v.id, oldJourney: journey, oldSubject: subject }));
+                        // }}
+                        // onDragOver={(e) => e.preventDefault()}
+                        // onDrop={(e) => {
+                        //   e.stopPropagation(); // Prevent parent drop from triggering
+                        //   e.preventDefault();
+                        //   const droppedData = JSON.parse(e.dataTransfer.getData("text/plain"));
+                        //   console.log("Dropped video:", droppedData.videoId, "on item in", { journey, subject });
+                        //   // Logic to reorder within the same subject or move to a different subject/journey
+                        // }}
+                      >
+                        <img
+                          src={v.thumbnail}
+                          alt={v.title}
+                          className={styles.arrangeVideoThumbnail}
+                        />
+                        <div className={styles.arrangeVideoDetails}>
+                          <p className={styles.arrangeVideoTitle}>{v.title}</p>
+                          <p className={styles.arrangeVideoMeta}>
+                            {v.status} • {v.views} views
+                          </p>
+                        </div>
+                        <button className={styles.arrangePreviewButton}>
+                          Preview
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
-            </div>
-          </div>
-        ))}
+            </React.Fragment>
+          )
+        )}
       </div>
     );
   };
@@ -360,13 +466,14 @@ const Content = () => {
       <div className={styles.sidebarContainer}>
         <Sidebar />
       </div>
-      
+
       <div className={styles.mainContent}>
         <div className={styles.contentArea}>
           <div className={styles.pageHeader}>
             <h2 className={styles.pageTitle}>Content Management</h2>
             <p className={styles.pageSubtitle}>
-              Add, preview, re-arrange, schedule, hide/unhide and move content across journeys & subjects
+              Add, preview, re-arrange, schedule, hide/unhide and move content
+              across journeys & subjects
             </p>
           </div>
 
@@ -452,7 +559,7 @@ const Content = () => {
                 }`}
                 onClick={() => setSelectedView("preview")}
               >
-                Preview View
+                Video Library
               </button>
               <button
                 className={`${styles.viewButton} ${
@@ -460,7 +567,7 @@ const Content = () => {
                 }`}
                 onClick={() => setSelectedView("arrange")}
               >
-                Arrange View
+                Arrange
               </button>
             </div>
           </div>
@@ -470,7 +577,9 @@ const Content = () => {
           </div>
 
           <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Arrange by Subject (Drag and drop)</h3>
+            <h3 className={styles.cardTitle}>
+              Arrange by Subject (Drag and drop)
+            </h3>
             {selectedView === "table" && renderTableView()}
             {selectedView === "preview" && renderPreviewView()}
             {selectedView === "arrange" && renderArrangeView()}

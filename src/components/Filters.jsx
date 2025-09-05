@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import styles from "./Filters.module.css";
 
-const Filters = () => {
+const Filters = ({ youtubeAnalytics }) => { // ⬅️ Add youtubeAnalytics prop
   const [company, setCompany] = useState("All Companies");
   const [subject, setSubject] = useState("All Subjects");
   const [date, setDate] = useState("Last 30 Days");
   const [journey, setJourney] = useState("All Journeys");
+  const [contentType, setContentType] = useState("All Content Types"); // ⬅️ New state for Content Type
 
   const companies = ["All Companies", "Company 1", "Company 2", "Company 3", "Company 4"];
   const subjects = ["All Subjects", "Health", "Career", "Mental Health", "Finance"];
   const dates = ["Last 7 days", "Last 30 Days", "Last 60 Days", "Last 90 Days", "Custom"];
-
-  // ✅ Better journey options
   const journeys = ["All Journeys", "Onboarding", "Learning", "Wellbeing", "Career Growth"];
+  const contentTypes = ["All Content Types", "Video", "Shorts", "Live Stream", "Post"]; // ⬅️ Options for Content Type
 
   return (
     <div className={styles.filtersContainer}>
@@ -74,6 +74,22 @@ const Filters = () => {
           <input type="date" className={styles.filterInput} />
         )}
       </div>
+
+      {/* Content Type - Visible only if youtubeAnalytics prop is true */}
+      {youtubeAnalytics && ( // ⬅️ Conditional rendering
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel}>Content Type</label>
+          <select
+            value={contentType}
+            onChange={(e) => setContentType(e.target.value)}
+            className={styles.filterSelect}
+          >
+            {contentTypes.map((type) => (
+              <option key={type} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Reset Button */}
       <button className={styles.resetButton}>Reset Filter</button>

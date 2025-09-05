@@ -122,14 +122,11 @@ body {
   color: #333;
 }
 
-/* ------------------------------
-   Performance / Highlights Card
-------------------------------- */
 .performanceCard {
   background: #fff;
   border-radius: 16px;
   padding: 24px 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0e6ed;
   display: flex;
   flex-direction: column;
@@ -174,8 +171,9 @@ body {
   font-weight: 600;
   line-height: 131%;
   color: #757575;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
+
 
 /* ------------------------------
    Data Tables
@@ -199,21 +197,30 @@ body {
 }
 
 .viewAllButton {
-  padding: 6px 12px;
-  background: transparent;
-  color: #2196f3;
-  border: 1px solid #2196f3;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 500;
+  background: none;
+  border: none;
+  color: #AB1A52;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+  font-style: semibold;
+  line-height: 131%;  
 }
 
 .viewAllButton:hover {
-  background: #2196f3;
-  color: #fff;
+  color: #8e1544; /* darker shade on hover */
 }
+
+.viewAllButton .icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
 
 .dataTable {
   width: 100%;
@@ -238,6 +245,11 @@ body {
 
 .dataTable tr:hover {
   background: #f8f9fa;
+}
+.manageContent {
+  color: #AB1A52;
+  font-size: 14px;   /* optional */
+  font-weight: 600;  /* optional */
 }
 
 .nameCell,

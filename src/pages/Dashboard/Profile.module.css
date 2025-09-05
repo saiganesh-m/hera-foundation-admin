@@ -24,9 +24,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
 }
 
 .pageTitleContainer {
@@ -274,6 +272,20 @@ body {
   margin: 0;
 }
 
+.legalRow {
+  display: flex;
+  justify-content: space-evenly; /* spread items across full width */
+  width: 100%; /* make sure it takes full card width */
+  flex-wrap: wrap; /* optional: wrap on very small screens */
+}
+
+.legalItem {
+  margin: 0; /* remove default margin */
+  flex: 1; /* optional: allow items to grow evenly */
+  text-align: start; /* optional: center text in each segment */
+}
+
+
 .legalCard {
   background: white;
   border-radius: 8px;
@@ -314,6 +326,21 @@ body {
 .link:hover {
   text-decoration: underline;
 }
+
+.legalRow {
+  display: flex;
+  gap: 20px; /* space between items */
+  flex-wrap: wrap; /* optional: wrap on smaller screens */
+}
+
+.legalItem {
+  margin: 0; /* remove default margin */
+}
+
+.legalValue {
+  font-weight: 600;
+}
+
 
 /* Responsive styles */
 @media (max-width: 1024px) {

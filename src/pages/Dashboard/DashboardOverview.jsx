@@ -143,14 +143,19 @@ const DashboardOverview = () => {
             </div>
 
             <div className={styles.performanceCard}>
-              <h3 className={styles.chartTitle}>Highlights</h3>
-              <p className={styles.metricValue}>9.7m</p>
-              <p className={styles.metricLabel}>Avg. minutes watched / user</p>
-              <h4 className={styles.subMetricTitle}>Colgate</h4>
-              <p className={styles.subMetricValue}>Most active company</p>
-              <h4 className={styles.subMetricTitle}>Preconception</h4>
-              <p className={styles.subMetricValue}>Most popular journey</p>
-            </div>
+                <h3 className={styles.chartTitle}>Highlights</h3>
+                <p className={styles.metricValue}>9.7m</p>
+                <p className={styles.metricLabel}>Avg. minutes watched / user</p>
+
+                <h4 className={styles.subMetricTitle}>Colgate</h4>
+                <p className={styles.subMetricValue}>Most active company</p>
+                <p className={styles.subMetricValue}>Based on last 30 days</p>
+
+                <h4 className={styles.subMetricTitle}>Preconception</h4>
+                <p className={styles.subMetricValue}>Most popular journey</p>
+                <p className={styles.subMetricValue}>By watch time</p>
+              </div>
+
           </div>
 
           {/* Tables */}
@@ -159,12 +164,20 @@ const DashboardOverview = () => {
             <div className={styles.dataCard}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>Recent User Signups</h3>
-                <button className={styles.viewAllButton}>View All</button>
+                <button className={styles.viewAllButton}>
+                  View All <span className={styles.icon}>&gt;</span>
+                </button>
+
               </div>
               <div className={styles.tableContainer}>
                 <table className={styles.dataTable}>
                   <thead>
-                    <tr><th>Name</th><th>Email</th><th>Company</th><th>Journey</th><th>Signup</th></tr>
+                    <tr><th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Journey</th>
+                    <th>Signup</th>
+                    </tr>
                   </thead>
                   <tbody>
                     {recentSignupsData.map((u, i) => (
@@ -189,6 +202,7 @@ const DashboardOverview = () => {
             <div className={styles.dataCard}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>Recently Added Content</h3>
+              <p className={styles.manageContent}>Manage Content</p>
               </div>
               <div className={styles.tableContainer}>
                 <table className={styles.dataTable}>

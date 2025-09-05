@@ -114,15 +114,25 @@ const YoutubeAnalytics = () => {
                All data and statistics drawn from YouTube studio and platform
               </p>
             </div>
-            <button className={styles.openStudioBtn}>
-              Open YouTube Studio
-            </button>
+         <button
+          className={styles.openStudioBtn}
+          onClick={() =>
+            window.open(
+              "https://studio.youtube.com/channel/UCUcesT4tDm2iSkEu7HylWuw",
+              "_blank" // opens in a new tab
+            )
+          }
+        >
+          Open YouTube Studio
+        </button>
+
           </div>
 
           {/* Filters */}
           <div className={styles.filtersWrapper}>
             <div className={styles.filtersContainer}>
-              <Filters />
+              {/* 💡 Pass youtubeAnalytics={true} here! */}
+              <Filters youtubeAnalytics={true} />
             </div>
           </div>
 

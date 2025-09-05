@@ -36,20 +36,24 @@ const Analytics = () => {
     { name: "Return To Work", value: 10 },
   ];
 
+  // Updated data to match the screenshot for "No. of Users by Company"
   const usersByCompany = [
-    { company: "Hera Pilot Co.", users: 150 },
-    { company: "Demo Ltd.", users: 90 },
-    { company: "Acee Group", users: 120 },
-    { company: "The Hera Foundation", users: 70 },
+    { company: "Acme Corp", users: 120 }, // Corresponds to the largest bar
+    { company: "Hera Pilot Co", users: 86 }, // Corresponds to the highlighted bar
+    { company: "Demo Ltd", users: 35 },     // Corresponds to a smaller bar
+    { company: "Zen Enterprises", users: 65 }, // Corresponds to the last bar
   ];
 
+  // Updated data to match the screenshot for "Top B Participation by Subject"
   const topParticipationBySubject = [
-    { subject: "Health & Food", participation: 180 },
-    { subject: "Understanding Your Cycle", participation: 160 },
-    { subject: "Balancing Your Career", participation: 170 },
-    { subject: "Financial Planning", participation: 140 },
-    { subject: "Managing Your Emotions", participation: 120 },
-    { subject: "Healthy Lifestyle", participation: 100 },
+    { subject: "Health & Fertility", participation: 290 }, // Tallest bar
+    { subject: "Understanding Your Body & Baby", participation: 240 },
+    { subject: "Balancing Your Career & Pregnancy", participation: 182 }, // Highlighted bar
+    { subject: "Understanding Mental Health for Family", participation: 160 },
+    { subject: "Financial Planning & Pregnancy", participation: 130 },
+    { subject: "Planning Your Career & Family Building", participation: 90 },
+    { subject: "Planning For Postpartum", participation: 70 },
+    { subject: "Navigating Your Career Postpartum", participation: 50 },
   ];
 
   // Colors
@@ -132,7 +136,7 @@ const Analytics = () => {
           <div className={styles.twoOneGrid}>
             {/* Line Chart */}
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>User Engagement</h3>
+              <h3 className={styles.chartTitle} >User Engagement</h3>
               <p className={styles.chartSubtitle}>
                 Content Consumption Over Time
               </p>
@@ -217,11 +221,23 @@ const Analytics = () => {
           <div className={styles.twoOneGrid}>
             {/* Bar Chart - Users by Company */}
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>No. of Users by Company</h3>
+              <h3 className={styles.chartTitle}>No. of</h3>
+                <p className={styles.chartSubtitle} style={{ marginBottom: "40px" }}>
+                Users by Company
+              </p>
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={usersByCompany}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                  <XAxis dataKey="company" stroke="#757575" fontSize={12} />
+                  <XAxis
+                    dataKey="company"
+                    stroke="#757575"
+                    fontSize={12}
+                    // Rotate labels for better readability if company names are long
+                    angle={-30}
+                    textAnchor="end"
+                    interval={0}
+                    height={60}
+                  />
                   <YAxis stroke="#757575" fontSize={12} />
                   <Tooltip
                     contentStyle={{
@@ -229,6 +245,9 @@ const Analytics = () => {
                       border: "1px solid #e0e6ed",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                     }}
+                    // Custom tooltip to show "Value: X"
+                    formatter={(value, name) => [`Value : ${value}`, null]}
+                    labelFormatter={(label) => `Company: ${label}`}
                   />
                   <Bar
                     dataKey="users"
@@ -242,19 +261,22 @@ const Analytics = () => {
             {/* Bar Chart - Participation by Subject */}
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>
-                Top B Participation by Subject
+                Top 8 
               </h3>
-              <ResponsiveContainer width="100%" height={250}>
+                <p className={styles.chartSubtitle}>
+               Participation by Subject
+              </p>
+              <ResponsiveContainer width="100%" height={350} >
                 <BarChart
                   data={topParticipationBySubject}
-                  margin={{ bottom: 60 }}
+                  margin={{ bottom: 40 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
                   <XAxis
                     dataKey="subject"
                     angle={-45}
                     textAnchor="end"
-                    height={80}
+                    height={100}
                     interval={0}
                     stroke="#757575"
                     fontSize={12}
@@ -266,6 +288,9 @@ const Analytics = () => {
                       border: "1px solid #e0e6ed",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                     }}
+                    // Custom tooltip to show "Value: X"
+                    formatter={(value, name) => [`Value : ${value}`, null]}
+                    labelFormatter={(label) => `${label}`}
                   />
                   <Bar
                     dataKey="participation"
@@ -281,6 +306,8 @@ const Analytics = () => {
           <div className={styles.tableContainer}>
             <div className={styles.tableHeader}>
               <h3 className={styles.tableTitle}>Activity (Filtered Rows)</h3>
+              <p className={styles.manageContent}>Export CSV</p>
+
             </div>
             <table className={styles.dataTable}>
               <thead>
