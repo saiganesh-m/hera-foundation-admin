@@ -25,67 +25,67 @@ const YoutubeAnalytics = () => {
   const COLORS = ["#F7DCC8", "#D4B7AD", "#E3CDC2"];
 
   const leastPerforming = [
-    { name: "Video A", value: 700 },
-    { name: "Video B", value: 850 },
-    { name: "Video C", value: 1000 },
-    { name: "Video D", value: 1200 },
-    { name: "Video E", value: 1400 },
+    { name: "Managing Stress (TTC)", value: 700 },
+    { name: "Budgeting for Baby", value: 850 },
+    { name: "Career Talk with HR Expert", value: 1000 },
+    { name: "Folic Acid & Diet Basics", value: 1200 },
+    { name: "Planning a Pregnancy 101", value: 1400 },
   ];
 
   const topPerforming = [
-    { name: "Video 1", value: 2200 },
-    { name: "Video 2", value: 2000 },
-    { name: "Video 3", value: 1800 },
-    { name: "Video 4", value: 1600 },
-    { name: "Video 5", value: 1500 },
+    { name: "Planning a Pregnancy 101", value: 2200 },
+    { name: "Folic Acid & Diet Basics", value: 2000 },
+    { name: "Career Talk with HR Expert", value: 1800 },
+    { name: "Budgeting for Baby", value: 1600 },
+    { name: "Managing Stress (TTC)", value: 1500 },
   ];
 
   const videoTable = [
     {
       id: 1,
-      thumbnail: "https://via.placeholder.com/80x60",
-      title: "Negotiating While Pregnant At Work",
+      thumbnail: "https://img.youtube.com/vi/-ctgFTZsJXs/hqdefault.jpg",
+      title: "Negotiating Work Policies & Benefits While Being Pregnant By ...",
       journey: "Return To Work",
-      subject: "Mental Health",
+      subject: "Health",
       type: "Video",
       views: 1116,
-      watchTime: 744, // in minutes
+      watchTime: 744,
       avgDuration: "4m",
       retention: "45%",
     },
     {
       id: 2,
-      thumbnail: "https://via.placeholder.com/80x60",
-      title: "How to Talk to HR",
+      thumbnail: "https://img.youtube.com/vi/0Dc55Ty7Zl8/hqdefault.jpg",
+      title: "Negotiating Work Policies & Benefits While Being Pregnant By ...",
       journey: "Return To Work",
       subject: "Mental Health",
       type: "Video",
       views: 1533,
-      watchTime: 1027, // in minutes
+      watchTime: 1027,
       avgDuration: "6m",
       retention: "48%",
     },
     {
       id: 3,
-      thumbnail: "https://via.placeholder.com/80x60",
-      title: "Balancing Career and Family",
-      journey: "Pregnancy Journey",
-      subject: "Work-Life Balance",
+      thumbnail: "https://img.youtube.com/vi/g0_eoSWNLMo/hqdefault.jpg",
+      title: "Negotiating Work Policies & Benefits While Being Pregnant By ...",
+      journey: "Pregnancy",
+      subject: "Career",
       type: "Podcast",
       views: 980,
-      watchTime: 820, // in minutes
+      watchTime: 820,
       avgDuration: "8m",
       retention: "55%",
     },
     {
       id: 4,
-      thumbnail: "https://via.placeholder.com/80x60",
-      title: "Financial Planning for New Parents",
-      journey: "Pre-Conception Journey",
+      thumbnail: "https://img.youtube.com/vi/XQ7iey1Al_M/hqdefault.jpg",
+      title: "Negotiating Work Policies & Benefits While Being Pregnant By ...",
+      journey: "Pre-Conception",
       subject: "Finance",
       type: "Webinar",
       views: 2100,
-      watchTime: 1800, // in minutes
+      watchTime: 1800,
       avgDuration: "10m",
       retention: "60%",
     },
@@ -94,6 +94,15 @@ const YoutubeAnalytics = () => {
   // Convert minutes to hours for display
   const formatWatchTime = (minutes) => {
     return (minutes / 60).toFixed(1);
+  };
+
+  // Axis text style
+  const axisTickStyle = {
+    fill: "#757575",
+    fontSize: 12,
+    fontWeight: 600,
+    lineHeight: "131%",
+    textAnchor: "end",
   };
 
   return (
@@ -106,41 +115,45 @@ const YoutubeAnalytics = () => {
       {/* Main Content */}
       <div className={styles.mainContent}>
         <div className={styles.contentWrapper}>
-          {/* Page Header - Fixed duplicate structure */}
+          {/* Page Header */}
           <div className={styles.pageHeader}>
             <div className={styles.headerText}>
               <h2 className={styles.pageTitle}>Youtube Analytics</h2>
               <p className={styles.pageSubtitle}>
-               All data and statistics drawn from YouTube studio and platform
+                All data and statistics drawn from YouTube studio and platform
               </p>
             </div>
-         <button
-          className={styles.openStudioBtn}
-          onClick={() =>
-            window.open(
-              "https://studio.youtube.com/channel/UCUcesT4tDm2iSkEu7HylWuw",
-              "_blank" // opens in a new tab
-            )
-          }
-        >
-          Open YouTube Studio
-        </button>
+        <button
+            className={styles.openStudioBtn}
+            onClick={() =>
+              window.open(
+                "https://studio.youtube.com/channel/UCUcesT4tDm2iSkEu7HylWuw",
+                "_blank"
+              )
+            }
+          >
+            Open YouTube Studio <span className={styles.arrow}>↗</span>
+          </button>
+
 
           </div>
 
           {/* Filters */}
           <div className={styles.filtersWrapper}>
             <div className={styles.filtersContainer}>
-              {/* 💡 Pass youtubeAnalytics={true} here! */}
-              <Filters youtubeAnalytics={true} />
+            <Filters
+            youtubeAnalytics={true}
+                filters={["journey", "subject", "contentType", "date"]}
+              />
+
+
             </div>
           </div>
 
           {/* Stat Cards + Journey Split */}
           <div className={styles.statsRow}>
-            {/* All 5 Stat Cards in One Row - matching screenshot layout */}
+            {/* 5 Stat Cards */}
             <div className={styles.fiveStatsRow}>
-              {/* First Row (3 cards) */}
               <div className={styles.firstRow}>
                 <div className={styles.statCard}>
                   <div className={styles.statTitle}>Total Views</div>
@@ -161,7 +174,6 @@ const YoutubeAnalytics = () => {
                 </div>
               </div>
 
-              {/* Second Row (2 cards) */}
               <div className={styles.secondRow}>
                 <div className={styles.statCard}>
                   <div className={styles.statTitle}>Avg. Duration</div>
@@ -176,11 +188,11 @@ const YoutubeAnalytics = () => {
               </div>
             </div>
 
-            {/* Journey Split - Compact Version */}
+            {/* Journey Split */}
             <div className={styles.journeyChart}>
               <h4>Journey Split</h4>
               <div className={styles.chartContainer}>
-                <ResponsiveContainer width="100%" height={180}>
+                <ResponsiveContainer width="100%" height={220}>
                   <PieChart>
                     <Pie
                       data={journeyData}
@@ -189,9 +201,7 @@ const YoutubeAnalytics = () => {
                       innerRadius={60}
                       outerRadius={80}
                       dataKey="value"
-                      label={({ name, percent }) =>
-                        `${(percent * 100).toFixed(0)}%`
-                      }
+                      label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                     >
                       {journeyData.map((entry, index) => (
                         <Cell
@@ -223,49 +233,37 @@ const YoutubeAnalytics = () => {
           {/* Performance Charts */}
           <div className={styles.chartsRow}>
             <div className={styles.chartCard}>
+              <h5>Least 5</h5>
               <h4>Least Performing Videos (Watch Time)</h4>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart
-                  data={leastPerforming}
-                  margin={{ bottom: 30 }}
-                >
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={leastPerforming} margin={{ bottom: 110 }}>
                   <XAxis
                     dataKey="name"
                     interval={0}
                     angle={-30}
                     textAnchor="end"
+                    tick={axisTickStyle}
                   />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar
-                    dataKey="value"
-                    fill="#D4B7AD"
-                    radius={[4, 4, 0, 0]}
-                  />
+                  <YAxis tick={axisTickStyle} />
+                  <Bar dataKey="value" fill="#D4B7AD" radius={[10, 10, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
 
             <div className={styles.chartCard}>
+              <h5>Top 5</h5>
               <h4>Top Performing Videos (Watch Time)</h4>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart
-                  data={topPerforming}
-                  margin={{ bottom: 30 }}
-                >
+              <ResponsiveContainer width="100%" height={330}>
+                <BarChart data={topPerforming} margin={{ bottom: 110 }}>
                   <XAxis
                     dataKey="name"
                     interval={0}
                     angle={-30}
                     textAnchor="end"
+                    tick={axisTickStyle}
                   />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar
-                    dataKey="value"
-                    fill="#4D9ECD"
-                    radius={[4, 4, 0, 0]}
-                  />
+                  <YAxis tick={axisTickStyle} />
+                  <Bar dataKey="value" fill="#4D9ECD" radius={[10, 10, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -298,10 +296,27 @@ const YoutubeAnalytics = () => {
                         className={styles.thumb}
                       />
                     </td>
-                    <td>{video.title}</td>
                     <td>
-                      <span className={styles.journeyTag}>{video.journey}</span>
-                    </td>
+                        <span className={styles.videoTitle}>{video.title}</span>
+                      </td>
+
+                   <td>
+                  <span
+                    className={`${styles.journeyTag} ${
+                      video.journey.includes("Pre-Conception")
+                        ? styles.Preconception
+                        : video.journey.includes("Pregnancy")
+                        ? styles.Pregnancy
+                        : video.journey.includes("Return To Work")
+                        ? styles.ReturntoWork
+                        : ""
+                    }`}
+                  >
+                    {video.journey}
+                  </span>
+                </td>
+
+
                     <td>{video.subject}</td>
                     <td>
                       <span className={styles.typeBadge}>{video.type}</span>

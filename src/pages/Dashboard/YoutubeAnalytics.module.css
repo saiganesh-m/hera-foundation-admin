@@ -2,7 +2,9 @@ body {
   font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-/* YouTubeAnalytics.module.css */
+/* -------------------------
+   Base Layout
+-------------------------- */
 .analyticsContainer {
   display: flex;
   min-height: 100vh;
@@ -10,33 +12,22 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Sidebar Section */
-.sidebarSection {
-  width: 200px;
-  flex-shrink: 0;
-  position: fixed;
-  height: 100vh;
-  z-index: 100;
-  overflow-y: auto;
-  left: 0;
-  top: 0;
-}
-
-/* Main Content */
 .mainContent {
   flex: 1;
-  margin-left: 200px; /* Match sidebar width */
+  margin-left: 270px; /* default sidebar space */
   display: flex;
   flex-direction: column;
 }
 
 .contentWrapper {
-  padding: 24px 32px;
+  padding: 24px 22px;
   flex-grow: 1;
   overflow-y: auto;
 }
 
-/* Page Header */
+/* -------------------------
+   Page Header
+-------------------------- */
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -84,13 +75,9 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(239, 68, 68, 0.3);
 }
-
-/* Filters */
-.filtersWrapper {
-  margin-bottom: 24px;
-}
-
-/* Stats + Journey Split */
+/* -------------------------
+   Stats & Charts
+-------------------------- */
 .statsRow {
   display: flex;
   gap: 24px;
@@ -99,7 +86,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Five Stats Row - matching screenshot layout */
 .fiveStatsRow {
   display: flex;
   flex-direction: column;
@@ -108,23 +94,25 @@ body {
   min-width: 60%;
 }
 
-.fiveStatsRow .firstRow {
+.fiveStatsRow .firstRow,
+.fiveStatsRow .secondRow {
   display: flex;
   gap: 16px;
+}
+
+.fiveStatsRow .firstRow {
   width: 80%;
 }
 
 .fiveStatsRow .secondRow {
-  display: flex;
-  gap: 16px;
   width: 53%;
 }
 
 .fiveStatsRow .statCard {
-  background: #FFFFFF; /* white background */
-  border-radius: 15px;
+  background: #fff;
+  border-radius: 20px;
   padding: 20px;
-  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.15); /* x=0, y=1, blur=6, spread=0, color=#00000026 equivalent */
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,41 +120,49 @@ body {
   min-width: 0;
 }
 
-
 .statTitle {
   font-size: 14px;
-  font-weight: 500;
-  color: #64748b;
+  font-weight: 600;
+  color: #757575;
   margin-bottom: 8px;
+  letter-spacing: 0px;
+  line-height: 131%;
+  font-style: semi-bold;
 }
 
 .statValue {
   font-size: 24px;
   font-weight: 700;
-  color: #1e293b;
+  color: #212121;
   margin-bottom: 4px;
+  letter-spacing: 0px;
+  line-height: 131%;
+  font-style: bold;
 }
 
 .statSubtitle {
-  font-size: 12px;
-  color: #94a3b8;
+  font-size: 10px;
+  color: #757575;
+  font-style: semi-bold;
+  line-height: 131%;
+  letter-spacing: 0px;
 }
 
 .journeyChart {
   flex: 1;
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   min-width: 35%;
   max-width: 40%;
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
 }
 
 .journeyChart h4 {
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 600;
   color: #374151;
@@ -179,9 +175,10 @@ body {
 
 .legend {
   margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* two per row */
+  justify-content: center; /* center grid */
+  gap: 12px 24px;
 }
 
 .legendItem {
@@ -190,19 +187,26 @@ body {
   gap: 8px;
 }
 
+/* ✅ Make the last legend item span both columns (centered below first row) */
+.legendItem:last-child {
+  grid-column: 1 / -1;   /* span full row */
+  justify-content: center;
+}
+
+
 .legendDot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: 20%;
   flex-shrink: 0;
 }
 
 .legendText {
-  font-size: 12px;
-  color: #64748b;
+  font-size: 13px;
+  color: #757575;
+  font-weight: 500;
 }
 
-/* Charts */
 .chartsRow {
   display: flex;
   gap: 24px;
@@ -213,33 +217,42 @@ body {
 .chartCard {
   flex: 1;
   background: #fff;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius:20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   min-width: 300px;
+  height: 400px;
 }
 
 .chartCard h4 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #374151;
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 700; /* Bold */
+  line-height: 131%;
+  color: #212121;
 }
 
-/* Table */
+.chartCard h5 {
+  color: #757575;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 131%;
+  margin: 0 0 8px 0;
+}
+/* -------------------------
+   Table
+-------------------------- */
 .tableWrapper {
   background: #fff;
   padding: 24px;
-  border-radius: 12px;
+  border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   margin-bottom: 24px;
 }
 
 .tableWrapper h4 {
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 600;
   color: #374151;
@@ -253,7 +266,7 @@ body {
 
 .performanceTable th,
 .performanceTable td {
-  padding: 12px 16px;
+  padding: 5px 12px;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
   font-size: 14px;
@@ -262,10 +275,10 @@ body {
 .performanceTable th {
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #64748b;
   white-space: nowrap;
-  background: #f8fafc;
+  
 }
 
 .performanceTable tr:hover {
@@ -274,26 +287,30 @@ body {
 
 .thumb {
   width: 80px;
-  height: 60px;
+  height: 50px;
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .journeyTag {
-  background: #e0f2fe;
-  color: #0369a1;
-  padding: 4px 8px;
-  border-radius: 20px;
-  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
   font-weight: 500;
+  white-space: nowrap;
+  display: inline-block;
 }
 
+/* Journey-specific colors */
+.journeyTag.Preconception { background: #FBE6E1; color: #91210A; }
+.journeyTag.Pregnancy { background: #E0F7F5; color: #115550; }
+.journeyTag.ReturntoWork { background: #E6E3FA; color: #3C2C9F; }
+
+
 .typeBadge {
-  background: #f0fdf4;
-  color: #166534;
-  padding: 4px 8px;
-  border-radius: 6px;
+
+  color: #424242;
   font-size: 12px;
   font-weight: 500;
 }
@@ -304,93 +321,144 @@ body {
 }
 
 .retentionPill {
-  background: linear-gradient(90deg, #10b981, #059669);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
+  color: #424242;
   font-size: 12px;
   font-weight: 600;
 }
 
-/* Responsive adjustments */
+/* -------------------------
+   Responsive Design
+-------------------------- */
+
+/* ✅ Large screens (default) */
+@media (min-width: 1201px) {
+  .legendItem {
+    min-width: calc(50% - 12px);
+  }
+}
+
+/* ✅ Medium screens (≤1200px) */
 @media (max-width: 1200px) {
   .fiveStatsRow .firstRow,
   .fiveStatsRow .secondRow {
     flex-wrap: wrap;
+    width: 100%;
   }
-  
+
   .fiveStatsRow .statCard {
     min-width: calc(50% - 8px);
   }
 }
 
+/* ✅ Tablets & small laptops (≤992px) */
 @media (max-width: 992px) {
   .statsRow {
     flex-direction: column;
   }
-  
+
   .journeyChart {
     max-width: 100%;
     min-width: 100%;
   }
-  
+
   .fiveStatsRow .statCard {
     min-width: 100%;
   }
+
+  .legendItem {
+    min-width: 100%; /* stack vertically */
+  }
 }
 
+/* ✅ Tablets portrait (≤768px) */
 @media (max-width: 768px) {
   .contentWrapper {
     padding: 16px;
   }
-  
+
   .sidebarSection {
     width: 70px;
   }
-  
+
   .mainContent {
     margin-left: 70px;
   }
-  
+
   .pageHeader {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   .chartCard {
     min-width: 100%;
   }
-  
+
   .fiveStatsRow .firstRow,
   .fiveStatsRow .secondRow {
     flex-direction: column;
-  }
-  
-  .fiveStatsRow .firstRow {
     width: 100%;
   }
-  
-  .fiveStatsRow .secondRow {
-    width: 100%;
+
+  .legendItem {
+    min-width: 100%;
   }
 }
 
+/* ✅ Mobile (≤576px) */
 @media (max-width: 576px) {
   .sidebarSection {
-    width: 0;
     display: none;
+    width: 0;
   }
-  
+
   .mainContent {
     margin-left: 0;
   }
-  
+
   .openStudioBtn {
     width: 100%;
   }
-  
+
   .pageTitle {
     font-size: 1.5rem;
   }
+
+  .legend {
+    gap: 10px;
+  }
+
+  .legendItem {
+    min-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .legendText {
+    font-size: 12px;
+  }
+}
+.videoTitle {
+  color: #212121;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 145%;
+  max-width: 250px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;       /* allow wrapping */
+  word-break: break-word;    /* break very long words */
+}
+
+.performanceTable td {
+  color: #424242;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 131%;
+}
+.arrow {
+  font-size: 1.4em; /* increase the arrow size */
+  margin-left: 6px; /* spacing from text */
+vertical-align: baseline;
 }

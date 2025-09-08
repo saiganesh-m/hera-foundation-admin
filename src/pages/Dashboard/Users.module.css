@@ -10,18 +10,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.sidebarContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
-  width: 200px;
-}
 
 .contentArea {
   flex: 1;
-  margin-left: 200px;
+  margin-left: 270px;
   padding-top: 75px;
   background-color: #f9f9f9;
   min-height: 100vh;
@@ -146,16 +138,19 @@ body {
   text-decoration: underline;
 }
 
-/* Badges */
-.journeyBadge {
-  padding: 4px 8px;
-  background-color: #ebf8ff;
-  color: #3182ce;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 131%;
+.journeyTag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-block;
 }
+
+
+.journeyTag.Preconception { background: #FBE6E1; color: #91210A; }
+.journeyTag.Pregnancy { background:#E0F7F5; color: #115550; }
+.journeyTag.ReturntoWork { background: #E6E3FA; color: #3C2C9F; }
 
 .engagementBadge {
   padding: 6px 8px;
@@ -250,10 +245,6 @@ body {
 
 @media (max-width: 480px) {
 
-  
-  .filterContainer {
-    padding: 15px;
-  }
   
   .pageTitle {
     font-size: 18px;

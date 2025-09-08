@@ -14,7 +14,7 @@ body {
 
 .contentArea {
   flex: 1;
-  margin-left: 200px;       /* space for Sidebar */
+  margin-left: 270px;       /* space for Sidebar */
   padding-top: 75px;        /* space for Topbar */
   background-color: #f9f9f9;
   min-height: 100vh;
@@ -52,20 +52,25 @@ body {
 ------------------------------- */
 .statGrid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   margin-bottom: 20px;
 }
 
-/* ------------------------------
-   Chart Cards
-------------------------------- */
 .twoOneGrid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   gap: 30px;
   margin-bottom: 2rem;
 }
+
+.gridTwoOne {
+  grid-template-columns: 2fr 1.1fr;
+}
+
+.gridEqual {
+  grid-template-columns: 1.1fr 2fr;
+}
+
 
 .chartCard {
   background: #fff;
@@ -82,29 +87,46 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+/* Chart & Donut Titles */
 .chartTitle {
   font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #757575;
 }
 
 .chartSubtitle {
-  font-size: 0.8rem;
-  color: #64748b;
-  margin-bottom: 16px;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+}
+.chartTitle1 {
+  position: absolute;
+  top: 20px;   /* same as card padding */
+  right: 20px; /* same as card padding */
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
 }
 
 /* ------------------------------
    Pie Legend
 ------------------------------- */
 .pieLegend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* 2 per row */
+  justify-content: center;  /* center the grid itself */
+  align-items: center;
+  gap: 12px 24px;
   margin-top: 16px;
+}
+
+/* ✅ Make the last item span across both columns and center it */
+.pieLegend .legendItem:last-child {
+  grid-column: 1 / -1;   /* span full width */
+  justify-self: center;  /* center within row */
 }
 
 .legendItem {
@@ -117,7 +139,7 @@ body {
 .legendColor {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: 15%;
   flex-shrink: 0;
 }
 
@@ -162,7 +184,6 @@ body {
 }
 
 .dataTable th {
-  background: #f8fafc;
   padding: 14px;
   border-bottom: 2px solid #e2e8f0;
   text-align: left;
@@ -240,3 +261,15 @@ body {
   .filterContainer, .chartCard { padding: 12px; border-radius: 12px; }
   .legendText { font-size: 12px; }
 }
+.journeyTag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.journeyTag.Preconception { background: #FBE6E1; color: #91210A; }
+.journeyTag.Pregnancy { background:#E0F7F5; color: #115550; }
+.journeyTag.ReturntoWork { background: #E6E3FA; color: #3C2C9F; }

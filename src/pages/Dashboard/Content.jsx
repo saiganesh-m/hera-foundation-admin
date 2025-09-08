@@ -9,187 +9,253 @@ import {
   faEye,
   faClock,
   faPlay,
+  faTimes,
+  faPencilAlt,
+  faTrash,
+  faEyeSlash,
+  faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Content = () => {
   const [videos, setVideos] = useState([
     {
       id: 1,
-      title: "Negotiating Work Policies",
-      journey: "Preconception Journey",
-      subject: "Health",
+      title: "Budgeting for Pregnancy",
+      journey: "Pregnancy Journey",
+      subject: "Finance",
       contentType: "Deep Dive",
       status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      publishedOn: "01-09-2025",
+      views: "1500",
+      avgWatch: "12.5m",
+      youtubeId: "bLVAyuhCYYk",
     },
     {
       id: 2,
-      title: "Lorem Ipsum",
+      title: "Financial Planning for New Parents",
       journey: "Preconception Journey",
-      subject: "Health",
-      contentType: "Quick Bite", // Changed to Quick Bite for screenshot
-      status: "Live", // Changed to Live for screenshot
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      subject: "Finance",
+      contentType: "Deep Dive",
+      status: "Scheduled",
+      publishedOn: "15-10-2025",
+      views: "800",
+      avgWatch: "10.0m",
+      youtubeId: "S9ZVbb4GpyQ",
     },
     {
       id: 3,
-      title: "Negotiating Work Policies",
-      journey: "Preconception Journey",
+      title: "Coping with Perinatal Anxiety",
+      journey: "Pregnancy Journey",
       subject: "Mental Health",
       contentType: "Deep Dive",
-      status: "Hidden",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      status: "Live",
+      publishedOn: "05-09-2025",
+      views: "2100",
+      avgWatch: "14.0m",
+      youtubeId: "o4X3KoySMBE",
     },
     {
       id: 4,
-      title: "Negotiating Work Policies",
+      title: "Mindfulness for Expecting Parents",
       journey: "Preconception Journey",
-      subject: "Finance",
-      contentType: "Deep Dive",
-      status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
-    },
-    {
-      id: 5,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
-      subject: "Career",
-      contentType: "Deep Dive",
-      status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
-    },
-    {
-      id: 6,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
-      subject: "Health",
-      contentType: "Quick Bite",
-      status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
-    },
-    {
-      id: 7,
-      title: "Lorem Ipsum",
-      journey: "Preconception Journey",
-      subject: "Health",
-      contentType: "Deep Dive", // Changed to Deep Dive for screenshot
-      status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
-    },
-    {
-      id: 8,
-      title: "Negotiating Work Policies",
-      journey: "Preconception Journey",
-      subject: "Career",
-      contentType: "Deep Dive",
-      status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
-    },
-    {
-      id: 9,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
       subject: "Mental Health",
       contentType: "Deep Dive",
       status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      publishedOn: "10-09-2025",
+      views: "1800",
+      avgWatch: "13.2m",
+      youtubeId: "lecO3r-A3VQ",
+    },
+    {
+      id: 5,
+      title: "Postpartum Depression: Support & Resources",
+      journey: "Return To Work Journey",
+      subject: "Mental Health",
+      contentType: "Deep Dive",
+      status: "Scheduled",
+      publishedOn: "20-11-2025",
+      views: "1200",
+      avgWatch: "16.1m",
+      youtubeId: "FMI3Jl7OVw0",
+    },
+    {
+      id: 6,
+      title: "Building Resilience as a New Parent",
+      journey: "Return To Work Journey",
+      subject: "Mental Health",
+      contentType: "Deep Dive",
+      status: "Hidden",
+      publishedOn: "01-12-2025",
+      views: "950",
+      avgWatch: "11.8m",
+      youtubeId: "lTlI5ibTuxM",
+    },
+    {
+      id: 7,
+      title: "Nutrition During Pregnancy",
+      journey: "Pregnancy Journey",
+      subject: "Health",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "03-09-2025",
+      views: "2500",
+      avgWatch: "18.0m",
+      youtubeId: "MjImD9KLPJM",
+    },
+    {
+      id: 8,
+      title: "Exercise Routines for Expecting Mothers",
+      journey: "Pregnancy Journey",
+      subject: "Health",
+      contentType: "Deep Dive",
+      status: "Live",
+      publishedOn: "08-09-2025",
+      views: "1900",
+      avgWatch: "15.5m",
+      youtubeId: "t5W0Vsp4hjw",
+    },
+    {
+      id: 9,
+      title: "Understanding Childbirth Options",
+      journey: "Pregnancy Journey",
+      subject: "Health",
+      contentType: "Deep Dive",
+      status: "Scheduled",
+      publishedOn: "22-10-2025",
+      views: "1600",
+      avgWatch: "20.0m",
+      youtubeId: "m4yRd69soSw",
     },
     {
       id: 10,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
-      subject: "Finance",
+      title: "Infant Care Basics",
+      journey: "Return To Work Journey",
+      subject: "Health",
       contentType: "Deep Dive",
       status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      publishedOn: "10-11-2025",
+      views: "2800",
+      avgWatch: "22.3m",
+      youtubeId: "R-FrwdBsos8",
     },
     {
       id: 11,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
-      subject: "Career",
+      title: "Postnatal Recovery Tips",
+      journey: "Return To Work Journey",
+      subject: "Health",
       contentType: "Deep Dive",
       status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      publishedOn: "15-11-2025",
+      views: "1750",
+      avgWatch: "17.9m",
+      youtubeId: "H2FiWmZUJqo",
     },
     {
       id: 12,
-      title: "Negotiating Work Policies",
-      journey: "Pregnancy Journey",
-      subject: "Finance",
+      title: "Breastfeeding and Lactation Support",
+      journey: "Return To Work Journey",
+      subject: "Health",
+      contentType: "Deep Dive",
+      status: "Scheduled",
+      publishedOn: "01-12-2025",
+      views: "1400",
+      avgWatch: "19.2m",
+      youtubeId: "BBO9_DFlsl8",
+    },
+    {
+      id: 13,
+      title: "Balancing Career and Parenthood",
+      journey: "Return To Work Journey",
+      subject: "Career",
       contentType: "Deep Dive",
       status: "Live",
-      publishedOn: "28-08-2025",
-      views: "1,440",
-      avgWatch: "7.9m",
-      thumbnail: "https://i.ibb.co/Lzd3B3q/pregnant-woman-on-call.png",
+      publishedOn: "20-09-2025",
+      views: "2300",
+      avgWatch: "16.8m",
+      youtubeId: "5ora94DPuD4",
     },
   ]);
 
-  const [selectedView, setSelectedView] = useState("arrange"); // Changed default to arrange
+  const [selectedView, setSelectedView] = useState("table");
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [currentVideoId, setCurrentVideoId] = useState("");
+  const [currentVideoTitle, setCurrentVideoTitle] = useState("");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingVideo, setEditingVideo] = useState(null);
+  const [formData, setFormData] = useState({
+    title: "",
+    journey: "",
+    subject: "",
+    contentType: "",
+    youtubeId: "",
+    publishedOn: "",
+  });
 
   const toggleDropdown = (id) => {
     setActiveDropdown(activeDropdown === id ? null : id);
   };
 
-  const handleEdit = (id) => {
-    console.log("Edit video with id:", id);
-    // Implement edit modal functionality here
-    alert(`Edit functionality for video ID: ${id}. Imagine a modal opening here.`);
+  const handleEdit = (video) => {
+    setEditingVideo(video);
+    setFormData({
+      title: video.title,
+      journey: video.journey,
+      subject: video.subject,
+      contentType: video.contentType,
+      youtubeId: video.youtubeId,
+      publishedOn: video.publishedOn,
+    });
+    setShowEditModal(true);
+    setActiveDropdown(null);
+  };
+
+  const handleSaveChanges = () => {
+    if (editingVideo) {
+      setVideos(prevVideos =>
+        prevVideos.map(video =>
+          video.id === editingVideo.id
+            ? { ...video, ...formData }
+            : video
+        )
+      );
+    }
+    setShowEditModal(false);
+    setEditingVideo(null);
   };
 
   const handleLive = (id) => {
-    console.log("Set video live with id:", id);
-    // Implement live functionality
+    setVideos(prevVideos =>
+      prevVideos.map(video =>
+        video.id === id ? { ...video, status: "Live" } : video
+      )
+    );
+    setActiveDropdown(null);
   };
 
   const handleSchedule = (id) => {
-    console.log("Schedule video with id:", id);
-    // Implement schedule functionality
+    setVideos(prevVideos =>
+      prevVideos.map(video =>
+        video.id === id ? { ...video, status: "Scheduled" } : video
+      )
+    );
+    setActiveDropdown(null);
   };
 
   const handleHide = (id) => {
-    console.log("Hide video with id:", id);
-    // Implement hide functionality
+    setVideos(prevVideos =>
+      prevVideos.map(video =>
+        video.id === id ? { ...video, status: "Hidden" } : video
+      )
+    );
+    setActiveDropdown(null);
   };
 
   const handleDelete = (id) => {
-    console.log("Delete video with id:", id);
-    // Implement delete functionality
+    if (window.confirm(`Are you sure you want to delete this video?`)) {
+      setVideos(prevVideos => prevVideos.filter(video => video.id !== id));
+    }
+    setActiveDropdown(null);
   };
 
   const getJourneyChipColor = (journey) => {
@@ -203,6 +269,26 @@ const Content = () => {
       default:
         return "";
     }
+  };
+
+  const openVideoModal = (youtubeId, title) => {
+    setCurrentVideoId(youtubeId);
+    setCurrentVideoTitle(title);
+    setShowVideoModal(true);
+  };
+
+  const closeVideoModal = () => {
+    setCurrentVideoId("");
+    setCurrentVideoTitle("");
+    setShowVideoModal(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const renderTableView = () => (
@@ -232,11 +318,19 @@ const Content = () => {
                 <input type="checkbox" className={styles.checkbox} />
               </td>
               <td className={styles.tableCell}>
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className={styles.thumbnail}
-                />
+                <div 
+                  className={styles.tableThumbnailWrapper} 
+                  onClick={() => openVideoModal(video.youtubeId, video.title)}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                    alt={video.title}
+                    className={styles.tableThumbnail}
+                  />
+                  <div className={styles.tableOverlay}>
+                    <FontAwesomeIcon icon={faPlay} className={styles.tablePlayIcon} />
+                  </div>
+                </div>
               </td>
               <td className={`${styles.tableCell} ${styles.titleCell}`}>
                 {video.title}
@@ -267,14 +361,14 @@ const Content = () => {
               <td className={styles.tableCell}>
                 <div className={styles.actionButtons}>
                   <button
-                    className={styles.editButton}
-                    onClick={() => handleEdit(video.id)}
+                    className={`${styles.actionButton} ${styles.editButton}`}
+                    onClick={() => handleEdit(video)}
                   >
-                    Edit
+                   Edit
                   </button>
                   <div className={styles.actionDropdown}>
                     <button
-                      className={styles.moreButton}
+                      className={`${styles.actionButton} ${styles.moreButton}`}
                       onClick={() => toggleDropdown(video.id)}
                     >
                       <FontAwesomeIcon icon={faEllipsisV} />
@@ -285,25 +379,25 @@ const Content = () => {
                           className={`${styles.dropdownButton} ${styles.liveButton}`}
                           onClick={() => handleLive(video.id)}
                         >
-                          Live
+                          <FontAwesomeIcon icon={faPlay} /> Set Live
                         </button>
                         <button
                           className={`${styles.dropdownButton} ${styles.scheduleButton}`}
                           onClick={() => handleSchedule(video.id)}
                         >
-                          Schedule
+                          <FontAwesomeIcon icon={faCalendarCheck} /> Schedule
                         </button>
                         <button
                           className={`${styles.dropdownButton} ${styles.hideButton}`}
                           onClick={() => handleHide(video.id)}
                         >
-                          Hide
+                          <FontAwesomeIcon icon={faEyeSlash} /> Hide
                         </button>
                         <button
                           className={`${styles.dropdownButton} ${styles.deleteButton}`}
                           onClick={() => handleDelete(video.id)}
                         >
-                          Delete
+                          <FontAwesomeIcon icon={faTrash} /> Delete
                         </button>
                       </div>
                     )}
@@ -321,32 +415,25 @@ const Content = () => {
     <div className={styles.previewGrid}>
       {videos.map((v) => (
         <div key={v.id} className={styles.previewCard}>
-          <div className={styles.thumbnailWrapper}>
+          <div className={styles.previewThumbnailWrapper} onClick={() => openVideoModal(v.youtubeId, v.title)}>
             <img
-              src={v.thumbnail}
+              src={`https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg`}
               alt={v.title}
               className={styles.previewThumbnail}
             />
-            <div className={styles.overlay}>
-              <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
-              <span className={styles.duration}>25:00</span>
+            <div className={styles.previewOverlay}>
+              <FontAwesomeIcon icon={faPlay} className={styles.previewPlayIcon} />
+              <span className={styles.previewDuration}>25:00</span>
             </div>
           </div>
-          <div className={styles.cardContent}>
-            {/* Removed "Your rights and craft confident" */}
-            <h4 className={styles.cardTitle}>{v.title}</h4>
-            <p className={styles.cardMeta}>
+          <div className={styles.previewCardContent}>
+            <h4 className={styles.previewCardTitle}>{v.title}</h4>
+            <p className={styles.previewCardMeta}>
               {v.journey} • {v.subject}
               {v.contentType && ` • ${v.contentType}`}
             </p>
-            <div className={styles.cardStats}>
-              <span className={styles.statItem}>
-                <FontAwesomeIcon icon={faEye} /> {v.views}
-              </span>
-              <span className={styles.statItem}>
-                <FontAwesomeIcon icon={faClock} /> {v.avgWatch} avg
-              </span>
-              <span
+            <div className={styles.previewCardStats}>
+                 <span
                 className={`${styles.statusBadge} ${
                   v.status === "Live"
                     ? styles.statusLive
@@ -357,6 +444,13 @@ const Content = () => {
               >
                 {v.status}
               </span>
+              <span className={styles.previewStatItem}>
+                <FontAwesomeIcon icon={faEye} /> {v.views}
+              </span>
+              <span className={styles.previewStatItem}>
+                <FontAwesomeIcon icon={faClock} /> {v.avgWatch} avg
+              </span>
+           
             </div>
           </div>
         </div>
@@ -365,7 +459,6 @@ const Content = () => {
   );
 
   const renderArrangeView = () => {
-    // Group videos by journey and then by subject for the arrange view structure
     const groupedByJourneyAndSubject = videos.reduce((acc, video) => {
       if (!acc[video.journey]) {
         acc[video.journey] = {};
@@ -386,21 +479,13 @@ const Content = () => {
                 <div
                   key={`${journey}-${subject}`}
                   className={styles.arrangeCardWrapper}
-                  // draggable
-                  // onDragStart={(e) => {
-                  //   e.dataTransfer.setData("text/plain", JSON.stringify({ journey, subject }));
-                  // }}
-                  // onDragOver={(e) => e.preventDefault()}
-                  // onDrop={(e) => {
-                  //   e.preventDefault();
-                  //   const droppedData = JSON.parse(e.dataTransfer.getData("text/plain"));
-                  //   console.log("Dropped on:", { journey, subject }, "from:", droppedData);
-                  //   // Logic to reorder/move cards here
-                  // }}
                 >
-                  <div className={styles.arrangeHeader}>
-                    <span className={styles.arrangeSubject}>{subject}</span>
-                    {/* Displaying content type of the first video in the group */}
+               <div className={styles.arrangeHeader}>
+                    <div className={styles.arrangeLeft}>
+                      <span className={styles.arrangeSubject}>{subject}</span>
+                      <p className={styles.arrangeJourney}>{journey}</p>
+                    </div>
+
                     {vids[0] && (
                       <span
                         className={`${styles.arrangeContentTypeBadge} ${
@@ -413,40 +498,38 @@ const Content = () => {
                       </span>
                     )}
                   </div>
-                  {/* Displaying journey for the group */}
-                  <p className={styles.arrangeJourney}>{journey}</p>
+
+
 
                   <div className={styles.arrangeVideoList}>
                     {vids.map((v) => (
                       <div
                         key={v.id}
                         className={styles.arrangeVideoItem}
-                        // draggable
-                        // onDragStart={(e) => {
-                        //   e.stopPropagation(); // Prevent parent drag from triggering
-                        //   e.dataTransfer.setData("text/plain", JSON.stringify({ videoId: v.id, oldJourney: journey, oldSubject: subject }));
-                        // }}
-                        // onDragOver={(e) => e.preventDefault()}
-                        // onDrop={(e) => {
-                        //   e.stopPropagation(); // Prevent parent drop from triggering
-                        //   e.preventDefault();
-                        //   const droppedData = JSON.parse(e.dataTransfer.getData("text/plain"));
-                        //   console.log("Dropped video:", droppedData.videoId, "on item in", { journey, subject });
-                        //   // Logic to reorder within the same subject or move to a different subject/journey
-                        // }}
                       >
-                        <img
-                          src={v.thumbnail}
-                          alt={v.title}
-                          className={styles.arrangeVideoThumbnail}
-                        />
+                        <div 
+                          className={styles.arrangeThumbnailWrapper}
+                          onClick={() => openVideoModal(v.youtubeId, v.title)}
+                        >
+                          <img
+                            src={`https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg`}
+                            alt={v.title}
+                            className={styles.arrangeVideoThumbnail}
+                          />
+                          <div className={styles.arrangeOverlay}>
+                            <FontAwesomeIcon icon={faPlay} className={styles.arrangePlayIcon} />
+                          </div>
+                        </div>
                         <div className={styles.arrangeVideoDetails}>
                           <p className={styles.arrangeVideoTitle}>{v.title}</p>
                           <p className={styles.arrangeVideoMeta}>
                             {v.status} • {v.views} views
                           </p>
                         </div>
-                        <button className={styles.arrangePreviewButton}>
+                        <button
+                          className={styles.arrangePreviewButton}
+                          onClick={() => openVideoModal(v.youtubeId, v.title)}
+                        >
                           Preview
                         </button>
                       </div>
@@ -459,6 +542,19 @@ const Content = () => {
         )}
       </div>
     );
+  };
+
+  const getCardTitle = () => {
+    switch (selectedView) {
+      case "table":
+        return "Video Library";
+      case "preview":
+        return "Preview (Playable)";
+      case "arrange":
+        return "Arrange by Subject (Drag and drop)";
+      default:
+        return "Content Overview";
+    }
   };
 
   return (
@@ -477,70 +573,78 @@ const Content = () => {
             </p>
           </div>
 
-          {/* Add A New Video Section */}
-          <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Add A New Video</h3>
-            <div className={styles.addVideoForm}>
-              <div className={styles.formGrid}>
-                <select className={styles.formSelect} defaultValue="">
-                  <option value="" disabled>
-                    Journey
-                  </option>
-                  <option>Preconception Journey</option>
-                  <option>Return To Work Journey</option>
-                  <option>Pregnancy Journey</option>
-                </select>
+        {/* Add A New Video Section */}
+<div className={styles.card}>
+  <h3 className={styles.cardTitle}>Add A New Video</h3>
 
-                <select className={styles.formSelect} defaultValue="">
-                  <option value="" disabled>
-                    Subject
-                  </option>
-                  <option>Health</option>
-                  <option>Mental Health</option>
-                  <option>Finance</option>
-                  <option>Career</option>
-                </select>
+  <div className={styles.addVideoForm}>
+    <div className={styles.formGrid}>
+      
+      {/* Journey */}
+      <select className={styles.formSelect} defaultValue="">
+        <option value="" disabled>
+          Journey
+        </option>
+        <option>Preconception Journey</option>
+        <option>Return To Work Journey</option>
+        <option>Pregnancy Journey</option>
+      </select>
 
-                <select className={styles.formSelect} defaultValue="">
-                  <option value="" disabled>
-                    Content Type
-                  </option>
-                  <option>Quick Bite</option>
-                  <option>Deep Dive</option>
-                </select>
+      {/* Subject */}
+      <select className={styles.formSelect} defaultValue="">
+        <option value="" disabled>
+          Subject
+        </option>
+        <option>Health</option>
+        <option>Mental Health</option>
+        <option>Finance</option>
+        <option>Career</option>
+      </select>
 
-                <input
-                  type="text"
-                  className={styles.formInput}
-                  placeholder="Video Title"
-                />
+      {/* Content Type */}
+      <select className={styles.formSelect} defaultValue="">
+        <option value="" disabled>
+          Content Type
+        </option>
+        <option>Quick Bite</option>
+        <option>Deep Dive</option>
+      </select>
 
-                <div className={styles.inputWithIcon}>
-                  <input
-                    type="text"
-                    className={styles.formInput}
-                    placeholder="https://youtube.com/"
-                  />
-                </div>
+      {/* Video Title */}
+      <input
+        type="text"
+        className={styles.formInput}
+        placeholder="Title"
+      />
 
-                <div className={styles.inputWithIcon}>
-                  <input
-                    type="text"
-                    className={styles.formInput}
-                    placeholder="dd-mm-yyyy"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCalendarAlt}
-                    className={styles.inputIcon}
-                  />
-                </div>
-              </div>
+      {/* YouTube Link */}
+      <input
+        type="text"
+        className={styles.formInput}
+        placeholder="YouTube Link"
+      />
 
-              <div className={styles.addButtonContainer}>
-                <button className={styles.addButton}>Add Video</button>
-              </div>
-            </div>
-          </div>
+      {/* Publish Date */}
+      <div className={styles.inputWithIcon}>
+        <input
+          type="text"
+          className={styles.formInput}
+          placeholder="dd-mm-yyyy"
+        />
+        <FontAwesomeIcon
+          icon={faCalendarAlt}
+          className={styles.inputIcon}
+        />
+      </div>
+    </div>
+
+    {/* Add Video Button */}
+    <div className={styles.addButtonContainer}>
+      <button className={styles.addButton}>Add Video</button>
+    </div>
+  </div>
+</div>
+
 
           {/* View Selection Buttons */}
           <div className={styles.viewSelectionContainer}>
@@ -559,7 +663,7 @@ const Content = () => {
                 }`}
                 onClick={() => setSelectedView("preview")}
               >
-                Video Library
+                Preview
               </button>
               <button
                 className={`${styles.viewButton} ${
@@ -572,20 +676,155 @@ const Content = () => {
             </div>
           </div>
 
-          <div className={styles.filterContainer}>
-            <Filters />
-          </div>
+           <div className={styles.filterContainer}>
+              {selectedView === "table" && (
+                <Filters
+                  filters={["journey", "subject", "contentType", "status", "search"]}
+                  title="Filters"
+                  youtubeAnalytics={true} // make sure this is true for Content Type
+                />
+              )}
+              {selectedView === "preview" && (
+                <Filters filters={["journey", "subject", "bucket", "status", "search"]} title="Filters" />
+              )}
+              {selectedView === "arrange" && (
+                <Filters filters={["journey", "subject", "bucket", "status", "search"]} title="Filters" />
+              )}
+            </div>
 
+          {/* Main content area for rendering views */}
           <div className={styles.card}>
-            <h3 className={styles.cardTitle}>
-              Arrange by Subject (Drag and drop)
-            </h3>
+            <h3 className={styles.cardTitle}>{getCardTitle()}</h3>
             {selectedView === "table" && renderTableView()}
             {selectedView === "preview" && renderPreviewView()}
             {selectedView === "arrange" && renderArrangeView()}
           </div>
         </div>
       </div>
+
+      {/* Video Playback Modal */}
+      {showVideoModal && (
+        <div className={styles.videoModalOverlay} onClick={closeVideoModal}>
+          <div className={styles.videoModalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.videoModalClose} onClick={closeVideoModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            {currentVideoTitle && (
+              <h4 className={styles.videoModalTitle}>
+                {currentVideoTitle}
+              </h4>
+            )}
+            <iframe
+              width="100%"
+              height="400"
+              src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Video Modal */}
+      {showEditModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowEditModal(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <h3 className={styles.modalTitle}>Edit Video</h3>
+              <button 
+                className={styles.modalClose} 
+                onClick={() => setShowEditModal(false)}
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            {editingVideo && (
+              < div className={styles.editThumbnailWrapper}>
+                <img
+                  src={`https://img.youtube.com/vi/${editingVideo.youtubeId}/mqdefault.jpg`}
+                  alt={editingVideo.title}
+                  className={styles.editThumbnail}
+                />
+                <p className={styles.editThumbnailTitle}>{editingVideo.title}</p>
+              </div>
+            )}
+            
+            <div className={styles.modalBody}>
+              <div className={styles.modalForm}>
+                <div className={styles.formRow}>
+                  <label className={styles.formLabel}>Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    className={styles.formInput}
+                  />
+                </div>
+                
+                <div className={styles.formRow}>
+                  <label className={styles.formLabel}>Journey</label>
+                  <select
+                    name="journey"
+                    value={formData.journey}
+                    onChange={handleInputChange}
+                    className={styles.formSelect}
+                  >
+                    <option value="Preconception Journey">Preconception Journey</option>
+                    <option value="Pregnancy Journey">Pregnancy Journey</option>
+                    <option value="Return To Work Journey">Return To Work Journey</option>
+                  </select>
+                </div>
+                
+                <div className={styles.formRow}>
+                  <label className={styles.formLabel}>Subject</label>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className={styles.formSelect}
+                  >
+                    <option value="Health">Health</option>
+                    <option value="Mental Health">Mental Health</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Career">Career</option>
+                  </select>
+                </div>
+                
+                <div className={styles.formRow}>
+                  <label className={styles.formLabel}>Content Type</label>
+                  <select
+                    name="contentType"
+                    value={formData.contentType}
+                    onChange={handleInputChange}
+                    className={styles.formSelect}
+                  >
+                    <option value="Quick Bite">Quick Bite</option>
+                    <option value="Deep Dive">Deep Dive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.modalFooter}>
+              <button 
+                className={styles.cancelButton}
+                onClick={() => setShowEditModal(false)}
+              >
+                Cancel
+              </button>
+              <button 
+                className={styles.saveButton}
+                onClick={handleSaveChanges}
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

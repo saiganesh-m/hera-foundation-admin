@@ -75,9 +75,12 @@ const Analytics = () => {
 
         <div className={styles.dashboardContent}>
           {/* Filters Section */}
-          <div className={styles.filterContainer}>
-            <Filters />
+        <div className={styles.filterContainer}>
+            <Filters
+              filters={["company", "journey", "subject", "startDate", "endDate"]}
+            />
           </div>
+
 
           {/* Stat Cards */}
           <div className={styles.statGrid}>
@@ -132,175 +135,154 @@ const Analytics = () => {
             />
           </div>
 
-          {/* User Engagement & Users by Journey */}
-          <div className={styles.twoOneGrid}>
-            {/* Line Chart */}
-            <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle} >User Engagement</h3>
-              <p className={styles.chartSubtitle}>
-                Content Consumption Over Time
-              </p>
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={dailyActiveUsers}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                  <XAxis dataKey="date" stroke="#757575" fontSize={12} />
-                  <YAxis stroke="#757575" fontSize={12} />
-                  <Tooltip
-                    contentStyle={{
-                      borderRadius: "8px",
-                      border: "1px solid #e0e6ed",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#4D9ECD"
-                    strokeWidth={2}
-                    dot={{ r: 3, fill: "#4D9ECD" }}
-                    activeDot={{ r: 5, fill: "#4D9ECD" }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+ {/* Row 1: User Engagement + Users by Journey */}
+<div className={`${styles.twoOneGrid} ${styles.gridTwoOne}`}>
+  {/* Line Chart */}
+  <div className={styles.chartCard}>
+    <h3 className={styles.chartTitle}>User Engagement</h3>
+    <p className={styles.chartSubtitle}>Content Consumption Over Time</p>
+         <h3 className={styles.chartTitle1}>Last 30 Days</h3>
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart data={dailyActiveUsers}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+        <XAxis dataKey="date" stroke="#757575" fontSize={12} />
+        <YAxis stroke="#757575" fontSize={12} />
+        <Tooltip
+          contentStyle={{
+            borderRadius: "8px",
+            border: "1px solid #e0e6ed",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+        />
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke="#4D9ECD"
+          strokeWidth={2}
+          dot={{ r: 3, fill: "#4D9ECD" }}
+          activeDot={{ r: 5, fill: "#4D9ECD" }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  </div>
 
-            {/* Donut Chart */}
-            <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>Users by Journey</h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <PieChart>
-                  <Pie
-                    data={usersByJourney}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    innerRadius={50}
-                    startAngle={90}
-                    endAngle={450}
-                    labelLine={false}
-                    label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
-                  >
-                    {usersByJourney.map((entry, index) => (
-                      <Cell
-                        key={index}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    formatter={(value, name) => [`${value}%`, name]}
-                    contentStyle={{
-                      borderRadius: "8px",
-                      border: "1px solid #e0e6ed",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+  {/* Donut Chart */}
+  <div className={styles.chartCard}>
+    <h3 className={styles.chartTitle}>Users by Journey</h3>
+    <ResponsiveContainer width="100%" height={250}>
+      <PieChart>
+        <Pie
+          data={usersByJourney}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          outerRadius={80}
+          innerRadius={50}
+          startAngle={90}
+          endAngle={450}
+          labelLine={false}
+          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+        >
+          {usersByJourney.map((entry, index) => (
+            <Cell key={index} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip
+          formatter={(value, name) => [`${value}%`, name]}
+          contentStyle={{
+            borderRadius: "8px",
+            border: "1px solid #e0e6ed",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+        />
+      </PieChart>
+    </ResponsiveContainer>
+    {/* Legend */}
+    <div className={styles.pieLegend}>
+      {usersByJourney.map((item, index) => (
+        <div key={index} className={styles.legendItem}>
+          <span
+            className={styles.legendColor}
+            style={{ backgroundColor: COLORS[index] }}
+          ></span>
+          <span className={styles.legendText}>
+            {item.name}: {item.value}%
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
-              {/* Custom Legend */}
-              <div className={styles.pieLegend}>
-                {usersByJourney.map((item, index) => (
-                  <div key={index} className={styles.legendItem}>
-                    <span
-                      className={styles.legendColor}
-                      style={{ backgroundColor: COLORS[index] }}
-                    ></span>
-                    <span className={styles.legendText}>
-                      {item.name}: {item.value}%
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+{/* Row 2: Users by Company + Participation by Subject */}
+<div className={`${styles.twoOneGrid} ${styles.gridEqual}`}>
+  {/* Users by Company */}
+  <div className={styles.chartCard}>
+    <h3 className={styles.chartTitle}>No. of users</h3>
+    <p className={styles.chartSubtitle} style={{ marginBottom: "50px" }}>
+      Users by Company
+    </p>
 
-          {/* Users by Company & Top B Participation */}
-          <div className={styles.twoOneGrid}>
-            {/* Bar Chart - Users by Company */}
-            <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>No. of</h3>
-                <p className={styles.chartSubtitle} style={{ marginBottom: "40px" }}>
-                Users by Company
-              </p>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={usersByCompany}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                  <XAxis
-                    dataKey="company"
-                    stroke="#757575"
-                    fontSize={12}
-                    // Rotate labels for better readability if company names are long
-                    angle={-30}
-                    textAnchor="end"
-                    interval={0}
-                    height={60}
-                  />
-                  <YAxis stroke="#757575" fontSize={12} />
-                  <Tooltip
-                    contentStyle={{
-                      borderRadius: "8px",
-                      border: "1px solid #e0e6ed",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    }}
-                    // Custom tooltip to show "Value: X"
-                    formatter={(value, name) => [`Value : ${value}`, null]}
-                    labelFormatter={(label) => `Company: ${label}`}
-                  />
-                  <Bar
-                    dataKey="users"
-                    fill="#D4B7AD"
-                    radius={[10, 10, 0, 0]}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={usersByCompany}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+        <XAxis
+          dataKey="company"
+          stroke="#757575"
+          fontSize={12}
+          angle={-30}
+          textAnchor="end"
+          interval={0}
+          height={60}
+        />
+        <YAxis stroke="#757575" fontSize={12} />
+        <Tooltip
+          contentStyle={{
+            borderRadius: "8px",
+            border: "1px solid #e0e6ed",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+          formatter={(value, name) => [`Value : ${value}`, null]}
+          labelFormatter={(label) => `Company: ${label}`}
+        />
+        <Bar dataKey="users" fill="#D4B7AD" radius={[10, 10, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
 
-            {/* Bar Chart - Participation by Subject */}
-            <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>
-                Top 8 
-              </h3>
-                <p className={styles.chartSubtitle}>
-               Participation by Subject
-              </p>
-              <ResponsiveContainer width="100%" height={350} >
-                <BarChart
-                  data={topParticipationBySubject}
-                  margin={{ bottom: 40 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-                  <XAxis
-                    dataKey="subject"
-                    angle={-45}
-                    textAnchor="end"
-                    height={100}
-                    interval={0}
-                    stroke="#757575"
-                    fontSize={12}
-                  />
-                  <YAxis stroke="#757575" fontSize={12} />
-                  <Tooltip
-                    contentStyle={{
-                      borderRadius: "8px",
-                      border: "1px solid #e0e6ed",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    }}
-                    // Custom tooltip to show "Value: X"
-                    formatter={(value, name) => [`Value : ${value}`, null]}
-                    labelFormatter={(label) => `${label}`}
-                  />
-                  <Bar
-                    dataKey="participation"
-                    fill="#4D9ECD"
-                    radius={[10, 10, 0, 0]}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+  {/* Participation by Subject */}
+  <div className={styles.chartCard}>
+    <h3 className={styles.chartTitle}>Top 8</h3>
+    <p className={styles.chartSubtitle}>Participation by Subject</p>
+    <ResponsiveContainer width="100%" height={350}>
+      <BarChart data={topParticipationBySubject} margin={{ bottom: 60 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+        <XAxis
+          dataKey="subject"
+          angle={-45}
+          textAnchor="end"
+          height={100}
+          interval={0}
+          stroke="#757575"
+          fontSize={12}
+        />
+        <YAxis stroke="#757575" fontSize={12} />
+        <Tooltip
+          contentStyle={{
+            borderRadius: "8px",
+            border: "1px solid #e0e6ed",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+          formatter={(value, name) => [`Value : ${value}`, null]}
+          labelFormatter={(label) => `${label}`}
+        />
+        <Bar dataKey="participation" fill="#4D9ECD" radius={[10, 10, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
+</div>
+
 
           {/* Table */}
           <div className={styles.tableContainer}>
@@ -326,7 +308,11 @@ const Analytics = () => {
                 <tr>
                   <td>01-08-2025</td>
                   <td>Hera Pilot Co.</td>
-                  <td>Pregnancy</td>
+                   <td>
+                    <span className={`${styles.journeyTag} ${styles.Preconception}`}>
+                      Preconception
+                    </span>
+                  </td>
                   <td>Health</td>
                   <td>31</td>
                   <td>50</td>
@@ -336,7 +322,11 @@ const Analytics = () => {
                 <tr>
                   <td>01-08-2025</td>
                   <td>Demo Ltd.</td>
-                  <td>Pregnancy</td>
+                   <td>
+                    <span className={`${styles.journeyTag} ${styles.Pregnancy}`}>
+                      Pregnancy
+                    </span>
+                  </td>
                   <td>Finance</td>
                   <td>32</td>
                   <td>62</td>
@@ -346,7 +336,11 @@ const Analytics = () => {
                 <tr>
                   <td>01-08-2025</td>
                   <td>Acee Group</td>
-                  <td>Pregnancy</td>
+                   <td>
+                    <span className={`${styles.journeyTag} ${styles.ReturntoWork}`}>
+                      Return to Work
+                    </span>
+                  </td>
                   <td>Mental Health</td>
                   <td>32</td>
                   <td>62</td>
@@ -356,7 +350,11 @@ const Analytics = () => {
                 <tr>
                   <td>04-08-2025</td>
                   <td>The Hera Foundation</td>
-                  <td>Preconception</td>
+                   <td>
+                    <span className={`${styles.journeyTag} ${styles.Preconception}`}>
+                      Preconception
+                    </span>
+                  </td>
                   <td>Health</td>
                   <td>32</td>
                   <td>62</td>
@@ -366,7 +364,11 @@ const Analytics = () => {
                 <tr>
                   <td>05-08-2025</td>
                   <td>Hera Pilot Co.</td>
-                  <td>Return to Work</td>
+                  <td>
+                    <span className={`${styles.journeyTag} ${styles.ReturntoWork}`}>
+                      Return to Work
+                    </span>
+                  </td>
                   <td>Finance</td>
                   <td>32</td>
                   <td>62</td>
@@ -376,7 +378,11 @@ const Analytics = () => {
                 <tr>
                   <td>08-08-2025</td>
                   <td>Demo Ltd.</td>
-                  <td>Pregnancy</td>
+                 <td>
+                    <span className={`${styles.journeyTag} ${styles.Pregnancy}`}>
+                      Pregnancy
+                    </span>
+                  </td>
                   <td>Mental Health</td>
                   <td>32</td>
                   <td>62</td>
@@ -386,7 +392,11 @@ const Analytics = () => {
                 <tr>
                   <td>08-08-2025</td>
                   <td>Acee Group</td>
-                  <td>Pregnancy</td>
+                 <td>
+                    <span className={`${styles.journeyTag} ${styles.Pregnancy}`}>
+                      Pregnancy
+                    </span>
+                  </td>
                   <td>Mental Health</td>
                   <td>32</td>
                   <td>62</td>

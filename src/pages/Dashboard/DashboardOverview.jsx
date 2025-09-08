@@ -26,7 +26,7 @@ const DashboardOverview = () => {
   const journeySplitData = [
     { name: "Preconception", value: 45 },
     { name: "Pregnancy", value: 35 },
-    { name: "ReturntoWork", value: 20 },
+    { name: "Return to Work", value: 20 },
   ];
 
   const COLORS = ["#b4d7f6", "#83b5d5", "#4D9ecd"];
@@ -47,13 +47,15 @@ const DashboardOverview = () => {
     { name: "Nana R.", email: "nana.r@example.com", company: "Dennis Ltd.", journey: "Preconception", signup: "Aug 18, 2024" }
   ];
 
-  const recentContentData = [
-    { title: "Trimester-Tester What & What", journey: "Pregnancy", subject: "Health", status: "Published", views: "1800", avgWatch: "8.4m" },
-    { title: "TTC Timeline:1 Experience vs Reality", journey: "Preconception", subject: "Health", status: "Published", views: "1410", avgWatch: "7.9m" },
-    { title: "Salary & Leave: 1 Know Your Rights", journey: "Pregnancy", subject: "Career", status: "Education", views: "0", avgWatch: "-" },
-    { title: "Investing as a Client (Parent) Going with TTC", journey: "ReturntoWork", subject: "Finance", status: "History", views: "0", avgWatch: "-" },
-    { title: "Going with TTC", journey: "Preconception", subject: "Health", status: "Published", views: "960", avgWatch: "9.1m" }
-  ];
+const recentContentData = [
+  { title: "Trimester-Tester What & What", journey: "Pregnancy", subject: "Health", status: "Live", views: "1800", avgWatch: "8.4m" },
+  { title: "TTC Timeline: Experience vs Reality", journey: "Preconception", subject: "Health", status: "Scheduled", views: "1410", avgWatch: "7.9m" },
+  { title: "Salary & Leave: Know Your Rights", journey: "Pregnancy", subject: "Career", status: "Hidden", views: "0", avgWatch: "-" },
+  { title: "Fertility Basics: Nutrition & Wellness", journey: "Preconception", subject: "Health", status: "Live", views: "960", avgWatch: "6.5m" },
+  { title: "Returning Moms: Balancing Work & Baby", journey: "ReturntoWork", subject: "Career", status: "Scheduled", views: "540", avgWatch: "7.1m" }
+];
+
+
 
   return (
     <div className={styles.dashboardContainer}>
@@ -63,9 +65,10 @@ const DashboardOverview = () => {
         
         <div className={styles.dashboardContent}>
           {/* Filters */}
-          <div className={styles.filterContainer}>
-            <Filters />
-          </div>
+         <div className={styles.filterContainer}>
+              <Filters filters={["company", "journey", "subject", "date"]} />
+            </div>
+
 
           {/* Stat Cards */}
           <div className={styles.statGrid}>
@@ -84,13 +87,14 @@ const DashboardOverview = () => {
             <div className={styles.chartCard}>
               <h3 className={styles.chartTitle}>User Growth</h3>
               <p className={styles.chartSubtitle}>New vs. Active User</p>
+               <h3 className={styles.chartTitle1}>Last 30 Days</h3>
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={userGrowthData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
                   <XAxis dataKey="date" stroke="#636e72" />
                   <YAxis stroke="#636e72" />
                   <Tooltip />
-                  <Line type="monotone" dataKey="active" stroke="#e91e63" strokeWidth={2} />
+                  <Line type="monotone" dataKey="active" stroke="#C57A60" strokeWidth={2} />
                   <Line type="monotone" dataKey="new" stroke="#2196f3" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
@@ -98,31 +102,51 @@ const DashboardOverview = () => {
 
             {/* Journey Split */}
             <div className={styles.chartCard}>
-              <h3 className={styles.chartTitle}>Journey Split (Total Users)</h3>
-              <ResponsiveContainer width="100%" height={250}>
-                <PieChart>
-                  <Pie
-                    data={journeySplitData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}   // ✅ donut style
-                    outerRadius={80}
-                    label={({ value }) => value}
-                  >
-                    {journeySplitData.map((entry, i) => (
-                      <Cell key={i} fill={COLORS[i % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Legend
-                    layout="horizontal"
-                    verticalAlign="bottom"
-                    align="center"
-                    iconType="circle" // ✅ round bullet legend
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <h3 className={styles.chartTitle2}>Journey Split (Total Users)</h3>
+              <ResponsiveContainer width="100%" height={330}>
+                    <PieChart>
+                      <Pie
+                        data={journeySplitData}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={40}
+                        outerRadius={80}
+                        label={({ value }) => value}
+                      >
+                        {journeySplitData.map((entry, i) => (
+                          <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                        ))}
+                      </Pie>
+
+                      {/* ✅ Custom Legend */}
+                    <Legend
+                            content={() => (
+                              <div className={styles.customLegend}>
+                                <div className={styles.legendRow}>
+                                  <div className={styles.legendItem}>
+                                    <span className={`${styles.legendDot} ${styles.preconception}`}></span>
+                                    Pre-Conception Journey
+                                  </div>
+                                  <div className={styles.legendItem}>
+                                    <span className={`${styles.legendDot} ${styles.pregnancy}`}></span>
+                                    Pregnancy Journey
+                                  </div>
+                                </div>
+                                <div className={styles.legendRow}>
+                                  <div className={styles.legendItem}>
+                                    <span className={`${styles.legendDot} ${styles.returnToWork}`}></span>
+                                    Return To Work Journey
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          />
+
+                    </PieChart>
+                  </ResponsiveContainer>
+
             </div>
           </div>
 
@@ -142,19 +166,20 @@ const DashboardOverview = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className={styles.performanceCard}>
-                <h3 className={styles.chartTitle}>Highlights</h3>
-                <p className={styles.metricValue}>9.7m</p>
-                <p className={styles.metricLabel}>Avg. minutes watched / user</p>
+          <div className={styles.performanceCard}>
+            <h3 className={styles.chartTitle3}>Top Performing</h3>
+            <p className={styles.metricValue}>9.7m</p>
+            <p className={styles.metricLabel}>Avg. minutes watched / user</p>
 
-                <h4 className={styles.subMetricTitle}>Colgate</h4>
-                <p className={styles.subMetricValue}>Most active company</p>
-                <p className={styles.subMetricValue}>Based on last 30 days</p>
+            <h4 className={styles.subMetricTitle}>Colgate</h4>
+            <p className={styles.subMetricValue}>Most active company</p>
+            <p className={styles.subMetricValue}>Based on last 30 days</p>
 
-                <h4 className={styles.subMetricTitle}>Preconception</h4>
-                <p className={styles.subMetricValue}>Most popular journey</p>
-                <p className={styles.subMetricValue}>By watch time</p>
-              </div>
+            <h4 className={styles.subMetricTitle}>Preconception</h4>
+            <p className={styles.subMetricValue}>Most popular journey</p>
+            <p className={styles.subMetricValue}>By watch time</p>
+          </div>
+
 
           </div>
 
@@ -221,8 +246,9 @@ const DashboardOverview = () => {
                         <td>{c.subject}</td>
                         <td>
                           <span className={`${styles.statusBadge} ${styles[c.status.toLowerCase()]}`}>
-                            {c.status}
+                             {c.status}
                           </span>
+
                         </td>
                         <td>{c.views}</td>
                         <td>{c.avgWatch}</td>

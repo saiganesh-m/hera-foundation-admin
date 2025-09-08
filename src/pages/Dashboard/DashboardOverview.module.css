@@ -1,27 +1,28 @@
 body {
   font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #f5f7f9;
 }
 
 /* ------------------------------
-   Dashboard Layout
+  Dashboard Layout
 ------------------------------- */
 .dashboardContainer {
   display: flex;
-  background-color: #f5f7f9;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
 }
 
 .contentArea {
   flex: 1;
-  margin-left: 200px;
-  padding-top: 75px;
+  margin-left: 270px;
+  padding: 100px 20px 20px 20px;
   background-color: #f9f9f9;
   min-height: 100vh;
 }
 
 .dashboardContent {
-  padding: 20px;
+  padding: 0;
 }
 
 .pageTitle {
@@ -38,11 +39,11 @@ body {
 }
 
 /* ------------------------------
-   Grid Layouts
+  Grid Layouts
 ------------------------------- */
 .statGrid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   margin-bottom: 20px;
 }
@@ -62,16 +63,24 @@ body {
 }
 
 /* ------------------------------
-   Cards
+  Cards
 ------------------------------- */
 .chartCard,
-.dataCard {
+.dataCard,
+.performanceCard {
   background: #fff;
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border: 1px solid #e0e6ed;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers content vertically */
+  padding: 20px;           /* keep some padding */
+  box-sizing: border-box;  /* ensures padding doesn't overflow */
+  min-height: 280px;       /* enough height for pie chart + legend */
+  position: relative;
 }
 
 .chartCard:hover,
@@ -80,29 +89,40 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 24px rgba(0,0,0,0.12);
 }
-
-/* ------------------------------
-   Chart & Donut Titles
-------------------------------- */
+/* Chart & Donut Titles */
 .chartTitle {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 6px;
   color: #757575;
-  line-height: 131%;
 }
 
 .chartSubtitle {
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #212121;
   margin-bottom: 12px;
-  line-height: 131%;
-  letter-spacing: 0px;
+  letter-spacing: 0;
+}
+.chartTitle1 {
+  position: absolute;
+  top: 20px;   /* same as card padding */
+  right: 20px; /* same as card padding */
+  font-size: 16px;
+  font-weight: 600;
+  color:#757575;
+}
+.chartTitle2{
+  position: absolute;
+  top: 20px;   /* same as card padding */
+  left: 20px; /* same as card padding */
+  font-size: 16px;
+  font-weight: 600;
+  color:#757575;
 }
 
 /* ------------------------------
-   Recharts Donut / Pie Chart
+  Recharts Donut / Pie Chart
 ------------------------------- */
 .recharts-wrapper {
   margin: auto;
@@ -122,64 +142,67 @@ body {
   color: #333;
 }
 
+/* ------------------------------*/
 .performanceCard {
   background: #fff;
   border-radius: 16px;
-  padding: 24px 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 12px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border: 1px solid #e0e6ed;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 12px; /* consistent spacing between blocks */
 }
 
-.performanceCard .chartTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #757575;
-  margin-bottom: 16px;
+.performanceCard .chartTitle3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 0px 0; /* bottom spacing only */
+  color: #212121;
+  line-height: 1.3;
 }
 
 .performanceCard .metricValue {
-  font-size: 20px;
+  font-size: 20px; /* bigger for emphasis */
   font-weight: 800;
-  line-height: 131%;
-  margin: 0 0 8px;
   color: #2d3436;
-  text-transform: capitalize;
+  margin: 0 0 0px 0;
+  line-height: 131%;
+  letter-spacing: 0px;
 }
 
 .performanceCard .metricLabel {
   font-size: 14px;
   font-weight: 600;
-  line-height: 131%;
   color: #757575;
-  margin: 0 0 24px;
+  margin: 0 0 0px 0; /* extra spacing before next block */
 }
 
 .performanceCard .subMetricTitle {
   font-size: 20px;
   font-weight: 800;
-  line-height: 131%;
   color: #212121;
-  margin: 0 0 4px;
-  text-transform: capitalize;
+  margin: 0 0 0px 0;
+  line-height: 131%;
+  letter-spacing: 0px;
+  font-style: ExtraBold;
 }
 
 .performanceCard .subMetricValue {
   font-size: 14px;
   font-weight: 600;
-  line-height: 131%;
   color: #757575;
-  margin: 0 0 10px;
+  margin: 0 0 0px 0;
+  line-height: 131%;
+  letter-spacing: 0px;
+  font-style: SemiBold;
 }
 
-
 /* ------------------------------
-   Data Tables
+  Data Tables
 ------------------------------- */
 .dataCard {
-  overflow-x: auto;
+  overflow-x: hidden; /* No horizontal scroll */
 }
 
 .cardHeader {
@@ -187,6 +210,8 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .cardTitle {
@@ -208,19 +233,16 @@ body {
   align-items: center;
   gap: 4px;
   transition: color 0.2s ease;
-  font-style: semibold;
-  line-height: 131%;  
 }
 
 .viewAllButton:hover {
-  color: #8e1544; /* darker shade on hover */
+  color: #8e1544;
 }
 
 .viewAllButton .icon {
   font-size: 14px;
   line-height: 1;
 }
-
 
 .dataTable {
   width: 100%;
@@ -246,19 +268,15 @@ body {
 .dataTable tr:hover {
   background: #f8f9fa;
 }
+
 .manageContent {
   color: #AB1A52;
-  font-size: 14px;   /* optional */
-  font-weight: 600;  /* optional */
-}
-
-.nameCell,
-.titleCell {
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* ------------------------------
-   Badges & Tags
+  Badges & Tags
 ------------------------------- */
 .journeyTag {
   padding: 4px 10px;
@@ -269,52 +287,99 @@ body {
   display: inline-block;
 }
 
-@media (max-width: 480px) {
-  .journeyTag {
-    font-size: 10px;
-    padding: 3px 8px;
-  }
-}
-
-.journeyTag.Preconception { 
-  background: #e3f2fd; 
-  color: #1976d2; 
-}
-
-.journeyTag.Pregnancy { 
-  background: #fce4ec; 
-  color: #c2185b; 
-}
-
-.journeyTag.ReturntoWork { 
-  background: #fff3e0; 
-  color: #ef6c00; 
-}
+.journeyTag.Preconception { background: #FBE6E1; color: #91210A; }
+.journeyTag.Pregnancy { background:#E0F7F5; color: #115550; }
+.journeyTag.ReturntoWork { background: #E6E3FA; color: #3C2C9F; }
 
 .statusBadge {
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
+
+.statusBadge.live { background: #E4FFEC; color: #008000; }
+.statusBadge.scheduled { background: #FFF8DD; color: #C98D1F; }
+.statusBadge.hidden { background: #EDECEC; color: #424242; }
 
 /* ------------------------------
-   Responsive
+  Custom Legend
 ------------------------------- */
+.customLegend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #757575;
+  gap: 10px;
+}
+
+.legendRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 10px;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 20%;
+}
+
+.legendDot.preconception { background: #b4d7f6; }
+.legendDot.pregnancy { background: #83b5d5; }
+.legendDot.returnToWork { background: #4D9ecd; }
+
+/* ------------------------------
+  Responsive Adjustments
+------------------------------- */
+
+/* Large screens ≤1200px */
 @media (max-width: 1200px) {
   .statGrid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 900px) {
-  .statGrid { grid-template-columns: repeat(2, 1fr); }
   .twoColumnGrid, .twoOneGrid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  .contentArea { margin-left: 0; }
-}
-
-@media (max-width: 600px) {
-  .statGrid { grid-template-columns: 1fr; }
   .dashboardContent { padding: 16px; }
 }
+
+/* Medium screens ≤900px */
+@media (max-width: 900px) {
+  .statGrid { grid-template-columns: repeat(2, 1fr); }
+  .dashboardContent { padding: 14px; }
+  .cardTitle { font-size: 15px; }
+  .viewAllButton { font-size: 13px; }
+  .dataTable th { font-size: 11px; padding: 8px 10px; }
+  .dataTable td { font-size: 12px; padding: 10px; }
+  .statusBadge { font-size: 10px; padding: 3px 8px; }
+  .journeyTag { font-size: 10px; padding: 3px 8px; }
+  .customLegend { font-size: 12px; gap: 8px; }
+}
+
+/* Small screens ≤600px */
+@media (max-width: 600px) {
+  .contentArea { margin-left: 0; padding: 12px; }
+  .statGrid, .twoColumnGrid, .twoOneGrid { grid-template-columns: 1fr; gap: 12px; }
+  .dataTable th { font-size: 10px; padding: 6px 8px; }
+  .dataTable td { font-size: 11px; padding: 8px; }
+  .cardTitle { font-size: 14px; }
+  .viewAllButton { font-size: 12px; }
+  .statusBadge { font-size: 9px; padding: 2px 6px; border-radius: 6px; }
+  .journeyTag { font-size: 9px; padding: 2px 6px; }
+  .customLegend { font-size: 11px; gap: 6px; }
+  .legendItem { padding: 3px 8px; gap: 4px; }
+  .legendDot { width: 10px; height: 10px; }
+}
+
